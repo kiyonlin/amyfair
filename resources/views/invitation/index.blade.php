@@ -15,14 +15,15 @@
 </head>
 <body>
     <div id="app">
-        <div>
-            <b-button>I am a Button{{ App::isLocale('zh-cn') }}111</b-button>
-            <b-button href="#">I am a Link</b-button>
-            <form method='post' action="/locale">
-                {{ csrf_field() }}
-                <b-button type="submit">change locale</b-button>
-            </form>
-        </div>
+    <b-container class="mt-5">
+        <b-form-row align-h="center" method="get" action="{{route('invitation.create', ['locate' => 'en'])}}">
+        @csrf    
+        <b-button type="submit" variant="outline-success">我是供应商 I AM A SUPPLIER</b-button>
+        </b-form-row>
+        <b-row align-h="center" class="mt-5">
+            <b-button variant="outline-success" @click="create('buyer')">我是采购商 I AM A PROFESSIONAL BUYER</b-button>
+        </b-row>
+    </b-container>
     </div>
 
     <!-- Scripts -->

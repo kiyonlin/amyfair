@@ -24,3 +24,7 @@ Route::get('{locale}/invitation', function ($locale) {
     App::setLocale($locale);
     return view('invitation.index');
 })->name('invitation');
+
+Route::get('{locale}/invitation/create', function ($locale) {
+    return view('invitation.create');
+})->name('invitation.create');

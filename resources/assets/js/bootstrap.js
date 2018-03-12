@@ -41,5 +41,7 @@ if (token) {
 //     encrypted: true
 // });
 
+// css
+import 'tailwindcss/dist/tailwind.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
