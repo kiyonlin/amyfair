@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Laravel\Passport\Passport;
+use Laravel\Passport\RouteRegistrar;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,5 +25,11 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
             $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
         }
+
+        Passport::ignoreMigrations();
+
+        Passport::routes(function (RouteRegistrar $router) {
+            $router->forAccessTokens();
+        });
     }
 }
