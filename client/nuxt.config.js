@@ -60,9 +60,6 @@ module.exports = {
         },
         vendor: ['vue-i18n'],
     },
-    css: [
-        // 'tailwindcss/css/tailwind.css'
-    ],
     modules: [
         'bootstrap-vue/nuxt'
     ],
