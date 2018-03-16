@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class AuthenticateApi extends Authenticate
 {
@@ -13,6 +12,6 @@ class AuthenticateApi extends Authenticate
             return $this->auth->shouldUse('api');
         }
 
-        throw new UnauthorizedHttpException('', 'Unauthenticated');
+        return response('unauthenticated', 401);
     }
 }

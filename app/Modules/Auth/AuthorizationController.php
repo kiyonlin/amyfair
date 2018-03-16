@@ -58,7 +58,7 @@ class AuthorizationController extends ApiController
             optional(auth('api')->user()->token())->revoke();
         }
 
-        return $this->respond(['message' => 'logout']);
+        return $this->respond('');
     }
 
     /**

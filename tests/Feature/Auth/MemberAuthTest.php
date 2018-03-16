@@ -84,15 +84,13 @@ class MemberAuthTest extends TestCase
      */
     public function user_can_logout()
     {
-        $user = create(User::class);
-
-        $this->actingAs($user, 'api');
+        $this->signInMember();
 
         $resp = $this->getJson(route('logout'))
             ->assertStatus(200)
             ->json();
 
-        $this->assertEquals('logout', $resp['message']);
+        $this->assertEmpty($resp);
     }
 
     /** 
