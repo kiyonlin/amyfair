@@ -12,15 +12,15 @@ export default function({
     if (isHMR) return
     // Get locale from params
     const locale = params.lang || defaultLocale
-    if (!store.state.locales.includes(locale)) {
+    if (!store.state.lang.locales.includes(locale)) {
         return error({
             message: 'This page could not be found.',
             statusCode: 404
         })
     }
     // Set locale
-    store.commit('SET_LANG', locale)
-    app.i18n.locale = store.state.locale
+    store.commit('lang/SET_LANG', locale)
+    app.i18n.locale = store.state.lang.locale
     // If route is /<defaultLocale>/... -> redirect to /...
     if (locale === defaultLocale && route.fullPath.includes('/' + defaultLocale)) {
         const toReplace = '^/' + defaultLocale

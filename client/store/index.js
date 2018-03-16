@@ -1,12 +1,26 @@
-export const state = () => ({
-    locales: ['en', 'zh_cn'],
-    locale: 'zh_cn'
-})
+import Cookies from 'js-cookie'
+import {
+    cookieFromRequest
+} from '~/utils'
 
-export const mutations = {
-    SET_LANG(state, locale) {
-        if (state.locales.includes(locale)) {
-            state.locale = locale
+export const actions = {
+    nuxtServerInit({
+        commit
+    }, {
+        req
+    }) {
+        const token = cookieFromRequest(req, 'token')
+        if (token) {
+            commit('auth/SET_TOKEN', token)
+        }
+    },
+
+    nuxtClientInit({
+        commit
+    }) {
+        const token = Cookies.get('token')
+        if (token) {
+            commit('auth/SET_TOKEN', token)
         }
     }
 }

@@ -1,12 +1,10 @@
-const PurgecssPlugin = require('purgecss-webpack-plugin')
-const glob = require('glob-all')
-const path = require('path')
+require('dotenv').config()
 
 module.exports = {
     srcDir: __dirname,
 
     env: {
-        apiUrl: process.env.APP_URL || 'http://amyfair-api.debug',
+        apiUrl: process.env.APP_URL || 'http://amyfair.debug',
         appName: process.env.APP_NAME || 'Amy fair',
     },
 
@@ -59,20 +57,6 @@ module.exports = {
                     exclude: /(node_modules)/
                 })
             }
-            if (!isDev) {
-                // Remove unused CSS using purgecss. See https://github.com/FullHuman/purgecss
-                // for more information about purgecss.
-                config.plugins.push(
-                    new PurgecssPlugin({
-                        paths: glob.sync([
-                            path.join(__dirname, './pages/**/*.vue'),
-                            path.join(__dirname, './layouts/**/*.vue'),
-                            path.join(__dirname, './components/**/*.vue')
-                        ]),
-                        whitelist: ['html', 'body']
-                    })
-                )
-            }
         },
         vendor: ['vue-i18n'],
     },
@@ -83,7 +67,7 @@ module.exports = {
         'bootstrap-vue/nuxt'
     ],
     router: {
-        middleware: 'i18n'
+        middleware: ['locale', 'check-auth']
     },
-    plugins: ['~/plugins/i18n.js'],
+    plugins: ['~/plugins/i18n.js', '~/plugins/axios.js', '~/plugins/nuxt-client-init.js'],
 }

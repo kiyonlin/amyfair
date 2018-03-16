@@ -10,7 +10,7 @@ export default ({
     // Set i18n instance on app
     // This way we can use it in middleware and pages asyncData/fetch
     app.i18n = new VueI18n({
-        locale: store.state.locale,
+        locale: store.state.lang.locale,
         fallbackLocale: 'zh_cn',
         messages: {
             'en': require('~/locales/en.json'),

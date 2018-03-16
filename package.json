@@ -13,10 +13,11 @@
         "precommit": "npm run lint"
     },
     "dependencies": {
+        "axios": "^0.18.0",
         "bootstrap-vue": "^2.0.0-rc.2",
-        "glob-all": "^3.1.0",
+        "dotenv": "^5.0.1",
+        "js-cookie": "^2.2.0",
         "nuxt": "^1.0.0",
-        "purgecss-webpack-plugin": "^0.20.1",
         "vue-i18n": "^7.5.0"
     },
     "devDependencies": {
