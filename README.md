@@ -2,6 +2,32 @@
 
 ## api server
 
+> Laravel project
+
+### usage
+
+``` bash
+# install dependencies
+composer install
+
+# get env
+cp .env.example .env
+
+# generete key
+php artisan key:generete
+
+# create database
+php artisan migrate
+
+# generate passport
+php artisan passport:install
+
+# write client secret to .env
+OAUTH_CLIENT_SECRET=sectet
+
+# test
+phpunit
+
 ## client
 
 > Nuxt.js project
