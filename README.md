@@ -22,7 +22,7 @@ php artisan migrate
 # generate passport
 php artisan passport:install
 
-# write client secret to .env
+# write Password grant client secret to .env
 OAUTH_CLIENT_SECRET=sectet
 
 # test
