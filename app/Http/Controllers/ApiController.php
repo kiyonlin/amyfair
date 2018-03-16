@@ -2,25 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class ApiController extends Controller
 {
     protected $statusCode = SymfonyResponse::HTTP_OK;
-
-    public function respondNotFound($message = 'Not Found!')
-    {
-        return $this->setStatusCode(SymfonyResponse::HTTP_NOT_FOUND)
-            ->respondWithError($message);
-    }
-
-    public function respondInternalError($message = 'Internal server error!')
-    {
-        return $this->setStatusCode(SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR)
-            ->respondWithError($message);
-    }
 
     public function respond($data, $header = [])
     {
@@ -35,6 +22,30 @@ class ApiController extends Controller
                 'status_code' => $this->getStatusCode()
             ]
         ]);
+    }
+
+    public function respondUnauthorized($message = 'unauthorized')
+    {
+        return $this->setStatusCode(SymfonyResponse::HTTP_UNAUTHORIZED)
+            ->respondWithError($message);
+    }
+
+    public function respondForbidden($message = 'forbidden')
+    {
+        return $this->setStatusCode(SymfonyResponse::HTTP_FORBIDDEN)
+            ->respondWithError($message);
+    }
+
+    public function respondNotFound($message = 'notFound')
+    {
+        return $this->setStatusCode(SymfonyResponse::HTTP_NOT_FOUND)
+            ->respondWithError($message);
+    }
+
+    public function respondInternalError($message = 'internalServerError')
+    {
+        return $this->setStatusCode(SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR)
+            ->respondWithError($message);
     }
 
     /**

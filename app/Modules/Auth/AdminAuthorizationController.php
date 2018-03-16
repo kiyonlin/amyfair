@@ -8,27 +8,22 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use App\Http\Controllers\ApiController;
 
-class PassportController extends ApiController
+class AdminAuthorizationController extends ApiController
 {
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
 
-    /**
-     * get token.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function token()
     {
         $validated = $this->validate(request(), [
-            'account'  => 'required|string|email|max:255|unique:users',
+            'account'  => 'required|string|email|max:255|unique:admins',
             'password' => 'required|string|min:6',
         ], [
         ]);
         $account = request('account');
-        $user = User::orWhere('email', $account)->orWhere('mobile', $account)->first();
+        $user = Admin::orWhere('email', $account)->orWhere('mobile', $account)->first();
 
         if ($user && ($user->forbidden == true)) {
             throw new UnauthorizedHttpException('', 'accountForbidden');
@@ -37,7 +32,7 @@ class PassportController extends ApiController
         $client = new Client();
         try {
             $request = $client->request('POST', request()->root() . 'oauth/token', [
-                'form_params' => config('passport') + $validated
+                'form_params' => config('passport') + $validated + ['guard' => 'admin']
             ]);
         } catch (RequestException $e) {
             throw new UnauthorizedHttpException('', 'Unauthorized');
@@ -47,20 +42,15 @@ class PassportController extends ApiController
             throw  new UnauthorizedHttpException('', 'Unauthorized');
         }
 
-        return response()->json($request->getBody()->getContents());
+        return $this->respond($request->getBody()->getContents());
     }
 
-    /**
-     * logout.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function logout()
     {
-        if (auth('api')->check()) {
-            auth('api')->user()->token()->delete();
+        if (auth('admin')->check()) {
+            auth('admin')->user()->token()->revoke();
         }
 
-        return response()->json(['message' => '登出成功', 'status_code' => 200, 'data' => null]);
+        return $this->respond('successToLogout');
     }
 }
