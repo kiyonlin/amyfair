@@ -1,0 +1,70 @@
+{
+    "links": {
+        "home": "Home",
+        "about": "About",
+        "invitation": "Invitation",
+        "english": "English",
+        "chinese": "简体中文",
+        "memberCenter": "Member Center",
+        "search": "Search",
+        "lang": "lang"
+    },
+    "home": {
+        "title": "Welcome",
+        "introduction": "This is an introduction in English."
+    },
+    "about": {
+        "title": "About",
+        "introduction": "This page is made to give you more informations."
+    },
+    "invitation": {
+        "title": "invitation",
+        "register": "register",
+        "supplier": "IM A SUPPLIER",
+        "buyer": "IM A BUYER",
+        "emailLabel": "E-mail",
+        "emailPlaceholder": "Your email",
+        "mobileLabel": "Mobile",
+        "mobilePlaceholder": "Enter mobile",
+        "fullNameLabel": "Full Name",
+        "fullNamePlaceholder": "Enter fullName",
+        "genderLabel": "Gender",
+        "phoneLabel": "Phone",
+        "imList": "IM at least one",
+        "qqLabel": "Tencent QQ",
+        "wechatLabel": "Tencent wechat",
+        "whatsappLabel": "Whatsapp",
+        "skypeLabel": "Skype",
+        "facebookLabel": "Facebook",
+        "corpNameLabel": "Corp Name",
+        "corpAddrLabel": "Corp Addr",
+        "websiteLabel": "Website",
+        "countryLabel": "Country",
+        "countryPlaceholder": "Country",
+        "industryLabel": "Industry",
+        "industryPlaceholder": "Industry",
+        "sourceLabel": "Source(Optional)",
+        "sourceSelect": {
+            "associationAgency": "Association Agency",
+            "cantonFairMerchants": "Canton Fair Merchants",
+            "exhibitionCollection": "Exhibition Collection",
+            "exhibitionProceedings": "Exhibition Proceedings",
+            "informationPlatform": "Information Platform",
+            "internetSearch": "Internet Search",
+            "preRegistration": "Pre-Registration",
+            "purchase": "Purchase",
+            "socialMedia": "Social Media",
+            "others": "Others"
+        },
+        "intentLabel": "Intent",
+        "tradingIntroLabel": "Trading intro",
+        "submitButton": "Submit",
+        "resetButton": "Reset",
+        "gendersText": {
+            "male": "Male",
+            "female": "Female"
+        },
+        "selectDefaultOptionOptional": "-- Please select an option (optional) --",
+        "optional": "Optional"
+    }
+}

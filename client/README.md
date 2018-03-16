@@ -1,12 +1,8 @@
-# demo
-
-## api server
-
-## client
+# amyfair
 
 > Nuxt.js project
 
-### Build Setup
+## Build Setup
 
 ``` bash
 # install dependencies

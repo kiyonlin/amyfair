@@ -1,0 +1,70 @@
+{
+    "links": {
+        "home": "首页",
+        "about": "关于",
+        "invitation": "邀请",
+        "english": "English",
+        "chinese": "简体中文",
+        "memberCenter": "会员中心",
+        "search": "搜索",
+        "lang": "语言"
+    },
+    "home": {
+        "title": "欢迎",
+        "introduction": "这是简体中文简介。"
+    },
+    "about": {
+        "title": "关于",
+        "introduction": "这个页面是为了给你更多的信息。"
+    },
+    "invitation": {
+        "title": "邀请",
+        "register": "注册",
+        "supplier": "我是供应商",
+        "buyer": "我是采购商",
+        "emailLabel": "邮箱",
+        "emailPlaceholder": "请输入您的电子邮件",
+        "mobileLabel": "手机号码",
+        "mobilePlaceholder": "请输入手机号码",
+        "fullNameLabel": "姓名",
+        "fullNamePlaceholder": "请输入您的姓名",
+        "genderLabel": "性别",
+        "phoneLabel": "电话",
+        "imList": "即时通讯至少输入一项",
+        "qqLabel": "QQ",
+        "wechatLabel": "微信",
+        "whatsappLabel": "WhatsApp",
+        "skypeLabel": "Skype",
+        "facebookLabel": "Facebook",
+        "corpNameLabel": "公司名称",
+        "corpAddrLabel": "公司地址",
+        "websiteLabel": "公司网址",
+        "countryLabel": "国家",
+        "countryPlaceholder": "请输入您的国家",
+        "industryLabel": "行业",
+        "industryPlaceholder": "请输入您的行业",
+        "sourceLabel": "来源(可选)",
+        "sourceSelect": {
+            "associationAgency": "协会机构",
+            "cantonFairMerchants": "广交会客商",
+            "exhibitionCollection": "展会搜集",
+            "exhibitionProceedings": "展会会刊",
+            "informationPlatform": "信息平台",
+            "internetSearch": "网络搜索",
+            "preRegistration": "预登记",
+            "purchase": "购买",
+            "socialMedia": "社交媒体",
+            "others": "其他"
+        },
+        "intentLabel": "意向参加项目",
+        "tradingIntroLabel": "贸易描述",
+        "submitButton": "提交",
+        "resetButton": "重置",
+        "gendersText": {
+            "male": "男",
+            "female": "女"
+        },
+        "selectDefaultOptionOptional": "-- 请选择(可选) --",
+        "optional": "可选"
+    }
+}
