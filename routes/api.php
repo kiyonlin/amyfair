@@ -19,5 +19,6 @@ Route::group(['namespace' => 'Auth'], function () {
 Route::group(['middleware' => 'auth-api'], function () {
     Route::group(['namespace' => 'Auth'], function () {
         Route::get('logout', 'AuthorizationController@logout')->name('logout');
+        Route::get('user', 'AuthorizationController@userInfo')->name('user.info');
     });
 });

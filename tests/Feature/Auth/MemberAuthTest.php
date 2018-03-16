@@ -95,6 +95,22 @@ class MemberAuthTest extends TestCase
         $this->assertEquals('logout', $resp['message']);
     }
 
+    /** 
+     * 获取用户信息
+     * 
+     * @test 
+     */
+    public function user_can_get_info()
+    {
+        $this->signInMember();
+
+        $resp = $this->getJson(route('user.info'))
+            ->assertStatus(Response::HTTP_CREATED)
+            ->json();
+
+        $this->assertEquals($resp['data']['id'], auth()->id());
+    }
+
     /**
      * 登录需要完整的参数.
      *

@@ -7,11 +7,6 @@ use App\Http\Controllers\ApiController;
 
 class AuthorizationController extends ApiController
 {
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
-
     /**
      * get token.
      *
@@ -64,5 +59,15 @@ class AuthorizationController extends ApiController
         }
 
         return $this->respond(['message' => 'logout']);
+    }
+
+    /**
+     * get user info.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function userInfo()
+    {
+        return new UserResource((auth()->user()));
     }
 }
