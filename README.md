@@ -29,6 +29,7 @@ OAUTH_CLIENT_SECRET=sectet
 phpunit
 
 ## client
+```
 
 > Nuxt.js project
 
