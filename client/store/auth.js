@@ -33,20 +33,13 @@ export const mutations = {
         state.token = null
     },
 
-    UPDATE_USER(state, {
-        user
-    }) {
+    UPDATE_USER(state, { user }) {
         state.user = user
     }
 }
 
 export const actions = {
-    saveToken({
-        commit,
-    }, {
-        token,
-        remember
-    }) {
+    saveToken({ commit, }, { token, remember }) {
         commit('SET_TOKEN', token)
         Cookies.set('token', token, {
             expires: remember ? 365 : null
@@ -56,9 +49,7 @@ export const actions = {
         commit
     }) {
         try {
-            const {
-                data
-            } = await axios.get('/user')
+            const { data } = await axios.get('/user')
 
             commit('FETCH_USER_SUCCESS', data)
         } catch (e) {
@@ -66,17 +57,12 @@ export const actions = {
             commit('FETCH_USER_FAILURE')
         }
     },
-    updateUser({
-        commit
-    }, payload) {
+    updateUser({ commit }, payload) {
         commit('UPDATE_USER', payload)
     },
-    async logout({
-        commit
-    }) {
+    async logout({ commit }) {
         try {
             await axios.post('/logout')
-
         } catch (e) {}
         Cookies.remove('token')
         commit('LOGOUT')

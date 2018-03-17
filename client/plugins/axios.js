@@ -2,11 +2,7 @@ import axios from 'axios'
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
-export default ({
-    app,
-    store,
-    redirect
-}) => {
+export default ({ app, store, redirect }) => {
     axios.defaults.baseURL = process.env.apiUrl + '/api'
     if (process.server) {
         return
@@ -25,9 +21,7 @@ export default ({
     })
 
     axios.interceptors.response.use(response => response, error => {
-        const {
-            status
-        } = error.response || {}
+        const { status } = error.response || {}
 
         if (status >= 500) {
             alert('500+ error')
