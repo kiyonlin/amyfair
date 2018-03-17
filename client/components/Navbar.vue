@@ -1,11 +1,11 @@
 <template>
   <div>
     <b-container fluid class="pl-0 pr-0">
-      <b-navbar toggleable="sm" type="light" variant="light" class="px-md-2 px-lg-5" fixed="top">
+      <b-navbar toggleable="sm" type="light" variant="light" class="px-md-2 px-lg-5 px-xl-5" fixed="top">
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
         <b-navbar-brand :to="$i18n.path('')" exact class="ml-lg-5">{{appName}}</b-navbar-brand>
         <b-collapse is-nav id="nav_collapse" class="mr-lg-5">
-          <b-navbar-nav>
+          <b-navbar-nav class="ml-auto">
             <b-nav-item :to="$i18n.path('')" exact>{{ $t('links.home') }}</b-nav-item>
             <b-nav-item :to="$i18n.path('about')" exact>{{ $t('links.about') }}</b-nav-item>
             <b-nav-item :to="$i18n.path('invitation')" exact>{{ $t('links.invitation') }}</b-nav-item>
@@ -31,8 +31,12 @@
               <template slot="button-content">
                 <em>{{ $t('links.memberCenter') }}</em>
               </template>
-              <b-dropdown-item :to="$i18n.path('setting/profile')">{{ $t('links.profile') }}</b-dropdown-item>
-              <b-dropdown-item @click.prevent="logout">{{ $t('links.logout') }}</b-dropdown-item>
+              <b-dropdown-item :to="$i18n.path('setting/profile')">
+                {{ $t('links.profile') }}
+              </b-dropdown-item>
+              <b-dropdown-item @click.prevent="logout">
+                {{ $t('links.logout') }}
+              </b-dropdown-item>
             </b-nav-item-dropdown>
             <!-- Guest -->
             <template v-if="!user">

@@ -14,18 +14,17 @@ module.exports = {
     head: {
         title: 'amyfair',
         meta: [{
-                charset: 'utf-8'
-            },
-            {
-                name: 'viewport',
-                content: 'width=device-width, initial-scale=1'
-            },
-            {
-                hid: 'description',
-                name: 'description',
-                content: 'amyfair'
-            }
-        ],
+            charset: 'utf-8'
+        },
+        {
+            name: 'viewport',
+            content: 'width=device-width, initial-scale=1'
+        },
+        {
+            hid: 'description',
+            name: 'description',
+            content: 'amyfair'
+        }],
         link: [{
             rel: 'icon',
             type: 'image/x-icon',
@@ -66,5 +65,10 @@ module.exports = {
     router: {
         middleware: ['locale', 'check-auth']
     },
-    plugins: ['~/plugins/i18n.js', '~/plugins/axios.js', '~/plugins/nuxt-client-init.js'],
+    plugins: [
+        '~plugins/i18n.js',
+        '~plugins/axios.js',
+        '~plugins/nuxt-client-init.js',
+        '~plugins/fontawesome'
+    ],
 }
