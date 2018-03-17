@@ -16,6 +16,11 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::post('login', 'AuthorizationController@token')->name('login');
 });
 
+Route::group(['namespace' => 'Invitation'], function () {
+    Route::get('invitations', 'InvitationController@index')->name('invitations.index');
+    Route::post('invitations', 'InvitationController@store')->name('invitations.store');
+});
+
 Route::group(['middleware' => 'auth-api'], function () {
     Route::group(['namespace' => 'Auth'], function () {
         Route::get('logout', 'AuthorizationController@logout')->name('logout');
