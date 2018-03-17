@@ -84,7 +84,8 @@ class ModuleAllCommand extends GeneratorCommand
     protected function createModel()
     {
         $this->call('module:model', [
-            'name' => $this->argument('name')
+            'name' => $this->argument('name'),
+            '--force' => $this->option('force')
         ]);
     }
 
@@ -97,11 +98,12 @@ class ModuleAllCommand extends GeneratorCommand
     {
         $this->call('module:factory', [
             'name' => $this->argument('name'),
+            '--force' => $this->option('force')
         ]);
     }
 
     /**
-     * Create a migration file for the model.
+     * Create a migration file for the module.
      *
      * @return void
      */
@@ -116,7 +118,7 @@ class ModuleAllCommand extends GeneratorCommand
     }
 
     /**
-     * Create a controller for the model.
+     * Create a controller for the module.
      *
      * @return void
      */
@@ -125,12 +127,13 @@ class ModuleAllCommand extends GeneratorCommand
         $controller = Str::studly(class_basename($this->argument('name')));
 
         $this->call('module:controller', [
-            'name' => "{$controller}",
+            'name' => $controller,
+            '--force' => $this->option('force')
         ]);
     }
 
     /**
-     * Create a api resource for the model.
+     * Create a api resource for the module.
      *
      * @return void
      */
@@ -139,12 +142,13 @@ class ModuleAllCommand extends GeneratorCommand
         $resource = Str::studly(class_basename($this->argument('name')));
 
         $this->call('module:resource', [
-            'name' => "{$resource}",
+            'name' => $resource,
+            '--force' => $this->option('force')
         ]);
     }
 
     /**
-     * Create a test for the model.
+     * Create a test for the module.
      *
      * @return void
      */
@@ -153,26 +157,29 @@ class ModuleAllCommand extends GeneratorCommand
         $test = Str::studly(class_basename($this->argument('name')));
 
         $this->call('module:test', [
-            'name' => "{$test}",
+            'name' => $test,
+            '--force' => $this->option('force')
         ]);
 
         $this->call('module:test', [
-            'name' => "{$test}",
-            '--unit' => true
+            'name' => $test,
+            '--unit' => true,
+            '--force' => $this->option('force')
         ]);
     }
 
     /**
-     * Create a api resource for the model.
+     * Create a api resource for the module.
      *
      * @return void
      */
     protected function createRequest()
     {
-        $resource = Str::studly(class_basename($this->argument('name')));
+        $request = Str::studly(class_basename($this->argument('name')));
 
         $this->call('module:request', [
-            'name' => "{$resource}",
+            'name' => $request,
+            '--force' => $this->option('force')
         ]);
     }
 

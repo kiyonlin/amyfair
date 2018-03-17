@@ -12,7 +12,10 @@ class ModuleTestCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $signature = 'module:test {name : The name of the class} {--unit : Create a unit test}';
+    protected $signature = 'module:test 
+                            {name : The name of the class} 
+                            {--unit : Create a unit test}
+                            {--force : Create the class even if the module already exists.}';
 
     /**
      * The console command description.
