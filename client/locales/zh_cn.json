@@ -7,7 +7,11 @@
         "chinese": "简体中文",
         "memberCenter": "会员中心",
         "search": "搜索",
-        "lang": "语言"
+        "lang": "语言",
+        "login": "登录",
+        "register": "注册",
+        "logout": "退出",
+        "profile": "个人信息"
     },
     "home": {
         "title": "欢迎",
