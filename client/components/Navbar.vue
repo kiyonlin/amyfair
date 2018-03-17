@@ -29,12 +29,14 @@
             <!-- Authenticated -->
             <b-nav-item-dropdown right v-if="true">
               <template slot="button-content">
-                <em>{{ $t('links.memberCenter') }}</em>
+                <fa icon="user"/>
               </template>
               <b-dropdown-item :to="$i18n.path('setting/profile')">
+                <fa icon="cog"/>
                 {{ $t('links.profile') }}
               </b-dropdown-item>
               <b-dropdown-item @click.prevent="logout">
+                <fa icon="sign-out-alt"/>
                 {{ $t('links.logout') }}
               </b-dropdown-item>
             </b-nav-item-dropdown>

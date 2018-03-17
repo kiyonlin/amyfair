@@ -58,6 +58,7 @@ module.exports = {
             }
         },
         vendor: ['vue-i18n'],
+        extractCSS: true
     },
     modules: [
         'bootstrap-vue/nuxt'
@@ -65,6 +66,9 @@ module.exports = {
     router: {
         middleware: ['locale', 'check-auth']
     },
+    css: [
+        '@fortawesome/fontawesome/styles.css',
+    ],
     plugins: [
         '~plugins/i18n.js',
         '~plugins/axios.js',
