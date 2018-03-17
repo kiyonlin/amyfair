@@ -45,9 +45,7 @@ export const actions = {
             expires: remember ? 365 : null
         })
     },
-    async fetchUser({
-        commit
-    }) {
+    async fetchUser({ commit }) {
         try {
             const { data } = await axios.get('/user')
 

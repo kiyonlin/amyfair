@@ -27,7 +27,7 @@
           </b-navbar-nav>
           <b-navbar-nav>
             <!-- Authenticated -->
-            <b-nav-item-dropdown right v-if="true">
+            <b-nav-item-dropdown right v-if="user">
               <template slot="button-content">
                 <fa icon="user"/>
               </template>

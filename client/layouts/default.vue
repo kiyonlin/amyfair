@@ -1,7 +1,7 @@
 <template>
   <div>
     <navbar/>
-
+    
     <b-container class="mt-3 pt-5 mx-lg-5 px-lg-5">
       <nuxt/>
     </b-container>
@@ -11,7 +11,9 @@
 <script>
 import Navbar from "~/components/Navbar";
 export default {
-  components: { Navbar }
+  components: {
+    Navbar
+  }
 };
 </script>
 
