@@ -8,6 +8,7 @@ class AuthenticateApi extends Authenticate
 {
     protected function authenticate(array $guards)
     {
+        \Log::info('AuthenticateApi middleware:' . request()->header('Authorization'));
         if ($this->auth->guard('api')->check()) {
             return $this->auth->shouldUse('api');
         }

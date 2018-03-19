@@ -8,10 +8,11 @@ export default ({ app, store, redirect, $axios }) => {
 
     $axios.onRequest(config => {
         const token = store.getters['auth/token']
-        // console.log('has token?', !!token)
+        console.log('has token?', !!token)
         if (token) {
             $axios.setToken(token, 'Bearer');
         }
+        console.log($axios.defaults.headers.common.Authorization)
     })
 
     $axios.onError(error => {

@@ -22,6 +22,7 @@
                 </b-form-checkbox-group>
               </b-form-group>
               <b-button @click="login" variant="primary">Submit</b-button>
+              <b-button @click="info" variant="primary">Info</b-button>
             </b-form>
           </b-list-group-item>
         </b-list-group>
@@ -50,7 +51,7 @@ export default {
     async login() {
       // Submit the form to get access token.
       const { access_token } = await this.$axios.$post("/login", this.form);
-
+      console.log("get token?", !!access_token);
       if (access_token) {
         // Save the token.
         this.$store.dispatch("auth/saveToken", {
@@ -70,6 +71,10 @@ export default {
           // this.$router.push({ path: this.$i18n.path("") });
         });
       }
+    },
+    async info() {
+      let info = await this.$axios.$get("user");
+      console.log(info);
     }
   }
 };
