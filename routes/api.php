@@ -16,6 +16,10 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::post('login', 'AuthorizationController@token')->name('login');
 });
 
+Route::get('test', function () {
+    return 'test api';
+});
+
 Route::group(['middleware' => 'auth-api'], function () {
     Route::group(['namespace' => 'Auth'], function () {
         Route::get('logout', 'AuthorizationController@logout')->name('logout');
