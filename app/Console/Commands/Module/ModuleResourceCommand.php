@@ -99,6 +99,8 @@ class ModuleResourceCommand extends GeneratorCommand
     {
         return [
             ['collection', 'c', InputOption::VALUE_NONE, 'Create a resource collection.'],
+            
+            ['force', null, InputOption::VALUE_NONE, 'Create the class even if the module already exists.'],
         ];
     }
 }

@@ -154,6 +154,8 @@ class ModulePolicyCommand extends GeneratorCommand
     {
         return [
             ['model', 'm', InputOption::VALUE_OPTIONAL, 'The model that the policy applies to.'],
+
+            ['force', null, InputOption::VALUE_NONE, 'Create the class even if the module already exists.'],
         ];
     }
 }

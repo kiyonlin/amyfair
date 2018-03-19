@@ -192,6 +192,8 @@ class ModuleControllerCommand extends GeneratorCommand
             ['parent', 'p', InputOption::VALUE_OPTIONAL, 'Generate a nested resource controller class.'],
 
             ['api', null, InputOption::VALUE_NONE, 'Exclude the create and edit methods from the controller.'],
+
+            ['force', null, InputOption::VALUE_NONE, 'Create the class even if the module already exists.'],            
         ];
     }
 }
