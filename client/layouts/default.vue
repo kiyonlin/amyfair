@@ -2,9 +2,9 @@
   <div>
     <navbar/>
     
-    <b-container class="mt-3 pt-5 mx-lg-5 px-lg-5">
+    <div class="mt-3 pt-5 mx-lg-5 px-lg-5">
       <nuxt/>
-    </b-container>
+    </div>
   </div>
 </template>
 

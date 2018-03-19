@@ -70,5 +70,17 @@
         },
         "selectDefaultOptionOptional": "-- 请选择(可选) --",
         "optional": "可选"
-    }
+    },
+    "errors": {
+        "internal": {
+            "title": "服务器错误",
+            "text": "请联系管理员"
+        },
+        "tokenExpired": {
+            "title": "登录超时",
+            "text": "请重新登录"
+        }
+    },
+    "ok": "确定",
+    "cancel": "取消"
 }

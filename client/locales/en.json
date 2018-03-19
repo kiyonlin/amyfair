@@ -70,5 +70,17 @@
         },
         "selectDefaultOptionOptional": "-- Please select an option (optional) --",
         "optional": "Optional"
-    }
+    },
+    "errors": {
+        "internal": {
+            "title": "Internal Server Error",
+            "text": "You can contact the administrator"
+        },
+        "tokenExpired": {
+            "title": "Login Timeout",
+            "text": "Please login again"
+        }
+    },
+    "ok": "OK",
+    "cancel": "Cancel"
 }

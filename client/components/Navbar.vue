@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-container fluid class="pl-0 pr-0">
-      <b-navbar toggleable="sm" type="light" variant="light" class="px-md-2 px-lg-5 px-xl-5" fixed="top">
+      <b-navbar toggleable="sm" type="dark" variant="info" class="px-md-2 px-lg-5 px-xl-5" fixed="top">
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
         <b-navbar-brand :to="$i18n.path('')" exact class="ml-lg-5">{{appName}}</b-navbar-brand>
         <b-collapse is-nav id="nav_collapse" class="mr-lg-5">
@@ -30,6 +30,7 @@
             <b-nav-item-dropdown right v-if="user">
               <template slot="button-content">
                 <fa icon="user"/>
+                {{ user.email }}
               </template>
               <b-dropdown-item :to="$i18n.path('setting/profile')">
                 <fa icon="cog"/>
@@ -43,7 +44,7 @@
             <!-- Guest -->
             <template v-if="!user">
               <b-nav-item :to="$i18n.path('auth/login')" exact>{{ $t('links.login') }}</b-nav-item>
-              <b-btn :to="$i18n.path('auth/register')" variant="outline-success">{{ $t('links.register') }}</b-btn>
+              <b-btn :to="$i18n.path('auth/register')" variant="light">{{ $t('links.register') }}</b-btn>
             </template>
           </b-navbar-nav>          
         </b-collapse>
@@ -67,8 +68,8 @@ export default {
     async logout() {
       // Log out the user.
       await this.$store.dispatch("auth/logout");
-      // Redirect to login.
-      this.$router.push({ name: "login" });
+      // Redirect to index.
+      this.$router.push({ path: this.$i18n.path("") });
     }
   }
 };
