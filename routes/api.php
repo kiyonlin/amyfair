@@ -31,3 +31,18 @@ Route::group(['middleware' => 'auth-api'], function () {
         Route::get('user', 'AuthorizationController@userInfo')->name('user.info');
     });
 });
+
+/******************************* admin routes **************************************/
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::group(['namespace' => 'Auth'], function () {
+        Route::post('login', 'AdminAuthorizationController@token')->name('admin.login');
+    });
+
+    Route::group(['middleware' => 'auth-api'], function () {
+        Route::group(['namespace' => 'Auth'], function () {
+            Route::get('logout', 'AdminAuthorizationController@logout')->name('admin.logout');
+            Route::get('admin', 'AdminAuthorizationController@adminInfo')->name('admin.info');
+        });
+    });
+});
