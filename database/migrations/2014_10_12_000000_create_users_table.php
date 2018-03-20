@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('mobile')->unique();
             $table->string('password');
             $table->boolean('forbidden')->default(false)->comment('is account forbidden');
+            $table->boolean('admin')->default(false)->comment('is admin account');
             $table->timestamps();
         });
     }

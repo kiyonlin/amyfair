@@ -4,7 +4,6 @@ namespace Tests;
 
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use App\Modules\Auth\User;
-use App\Modules\Auth\Admin;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -35,7 +34,7 @@ abstract class TestCase extends BaseTestCase
      */
     protected function signInAdmin($admin = null)
     {
-        $admin = $admin ?: create(Admin::class);
+        $admin = $admin ?: create(User::class, ['admin' => true]);
 
         $this->actingAs($admin, 'admin');
 

@@ -21,6 +21,7 @@ $factory->define(App\Modules\Auth\User::class, function (Faker $faker) {
         'mobile'           => $faker->unique()->phoneNumber,
         'password'         => Hash::make('111111'), // secret
         'forbidden'        => false,
+        'admin'            => false,
     ];
 });
 
