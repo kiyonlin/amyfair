@@ -62,8 +62,6 @@
         },
         "intentLabel": "意向参加项目",
         "tradingIntroLabel": "贸易描述",
-        "submitButton": "提交",
-        "resetButton": "重置",
         "gendersText": {
             "male": "男",
             "female": "女"
@@ -81,6 +79,19 @@
             "text": "请重新登录"
         }
     },
-    "ok": "确定",
-    "cancel": "取消"
+    "login": {
+        "title": "登录",
+        "welcome": "欢迎回来",
+        "usernameLabel": "电话",
+        "usernamePlaceholder": "电话",
+        "passwordLabel": "密码",
+        "passwordPlaceholder": "密码",
+        "remember": "记住我"
+    },
+    "btn": {
+        "ok": "确定",
+        "cancel": "取消",
+        "submit": "提交",
+        "reset": "重置"
+    }
 }

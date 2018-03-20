@@ -8,11 +8,11 @@ export default ({ app, store, redirect, $axios }) => {
 
     $axios.onRequest(config => {
         const token = store.getters['auth/token']
-        console.log('has token?', !!token)
         if (token) {
-            $axios.setToken(token, 'Bearer');
+            config.headers.common.Authorization = `Bearer ${token}`;
+        } else {
+            delete config.headers.common.Authorization
         }
-        console.log($axios.defaults.headers.common.Authorization)
     })
 
     $axios.onError(error => {
@@ -24,8 +24,8 @@ export default ({ app, store, redirect, $axios }) => {
                 title: app.i18n.t('errors.internal.title'),
                 text: app.i18n.t('errors.internal.text'),
                 reverseButtons: true,
-                confirmButtonText: app.i18n.t('ok'),
-                cancelButtonText: app.i18n.t('cancel')
+                confirmButtonText: app.i18n.t('btn.ok'),
+                cancelButtonText: app.i18n.t('btn.cancel')
             })
         }
 
@@ -35,8 +35,8 @@ export default ({ app, store, redirect, $axios }) => {
                 title: app.i18n.t('errors.tokenExpired.title'),
                 text: app.i18n.t('errors.tokenExpired.text'),
                 reverseButtons: true,
-                confirmButtonText: app.i18n.t('ok'),
-                cancelButtonText: app.i18n.t('cancel')
+                confirmButtonText: app.i18n.t('btn.ok'),
+                cancelButtonText: app.i18n.t('btn.cancel')
             }).then(async () => {
                 await store.dispatch('auth/logout')
 

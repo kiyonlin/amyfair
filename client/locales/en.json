@@ -62,8 +62,6 @@
         },
         "intentLabel": "Intent",
         "tradingIntroLabel": "Trading intro",
-        "submitButton": "Submit",
-        "resetButton": "Reset",
         "gendersText": {
             "male": "Male",
             "female": "Female"
@@ -81,6 +79,19 @@
             "text": "Please login again"
         }
     },
-    "ok": "OK",
-    "cancel": "Cancel"
+    "login": {
+        "title": "Login",
+        "welcome": "Welcome back",
+        "usernameLabel": "Username",
+        "usernamePlaceholder": "mobile",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "password",
+        "remember": "remember me"
+    },
+    "btn": {
+        "ok": "OK",
+        "cancel": "Cancel",
+        "submit": "Submit",
+        "reset": "Reset"
+    }
 }
