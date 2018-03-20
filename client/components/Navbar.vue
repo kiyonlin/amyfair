@@ -27,7 +27,7 @@
           </b-navbar-nav>
           <b-navbar-nav>
             <!-- Authenticated -->
-            <b-nav-item-dropdown right v-if="user">
+            <b-nav-item-dropdown right v-if="user && !user.admin">
               <template slot="button-content">
                 <fa icon="user"/>
                 {{ user.email }}
@@ -42,7 +42,7 @@
               </b-dropdown-item>
             </b-nav-item-dropdown>
             <!-- Guest -->
-            <template v-if="!user">
+            <template v-if="!user || user.admin">
               <b-nav-item :to="$i18n.path('auth/login')" exact>{{ $t('links.login') }}</b-nav-item>
               <b-btn :to="$i18n.path('auth/register')" variant="light">{{ $t('links.register') }}</b-btn>
             </template>
