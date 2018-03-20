@@ -78,8 +78,8 @@
             <b-form-textarea id="tradingIntro" v-model="form.tradingIntro" :rows="5" :max-rows="5" :placeholder="$t('invitation.optional')">
             </b-form-textarea>
           </b-form-group>
-          <b-button type="submit" variant="primary" class="m-3">{{$t('invitation.submitButton')}}</b-button>
-          <b-button type="reset" variant="danger" class="m-3">{{$t('invitation.resetButton')}}</b-button>
+          <b-button type="submit" variant="primary" class="m-3">{{$t('btn.submit')}}</b-button>
+          <b-button type="reset" variant="danger" class="m-3">{{$t('btn.reset')}}</b-button>
         </b-form>
       </b-col>
     </b-row>

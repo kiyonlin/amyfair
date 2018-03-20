@@ -1,4 +1,3 @@
-import axios from 'axios'
 import Cookies from 'js-cookie'
 
 export const state = () => ({
@@ -11,7 +10,7 @@ export const getters = {
     user: state => state.user,
     token: state => state.token,
     refreshToken: state => state.refreshToken,
-    check: state => state.check !== null,
+    check: state => state.user !== null,
 }
 
 export const mutations = {
@@ -42,12 +41,12 @@ export const actions = {
     saveToken({ commit, }, { token, remember }) {
         commit('SET_TOKEN', token)
         Cookies.set('token', token, {
-            expires: remember ? 365 : null
+            expires: remember ? 30 : null
         })
     },
-    async fetchUser({ commit }) {
+    async fetchUser({ state, commit }) {
         try {
-            const { data } = await axios.get('/user')
+            const { data } = await this.$axios.$get('/user')
 
             commit('FETCH_USER_SUCCESS', data)
         } catch (e) {
@@ -60,7 +59,7 @@ export const actions = {
     },
     async logout({ commit }) {
         try {
-            await axios.post('/logout')
+            await this.$axios.$get('/logout')
         } catch (e) {}
         Cookies.remove('token')
         commit('LOGOUT')

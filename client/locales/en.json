@@ -62,13 +62,36 @@
         },
         "intentLabel": "Intent",
         "tradingIntroLabel": "Trading intro",
-        "submitButton": "Submit",
-        "resetButton": "Reset",
         "gendersText": {
             "male": "Male",
             "female": "Female"
         },
         "selectDefaultOptionOptional": "-- Please select an option (optional) --",
         "optional": "Optional"
+    },
+    "errors": {
+        "internal": {
+            "title": "Internal Server Error",
+            "text": "You can contact the administrator"
+        },
+        "tokenExpired": {
+            "title": "Login Timeout",
+            "text": "Please login again"
+        }
+    },
+    "login": {
+        "title": "Login",
+        "welcome": "Welcome back",
+        "usernameLabel": "Username",
+        "usernamePlaceholder": "mobile",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "password",
+        "remember": "remember me"
+    },
+    "btn": {
+        "ok": "OK",
+        "cancel": "Cancel",
+        "submit": "Submit",
+        "reset": "Reset"
     }
 }

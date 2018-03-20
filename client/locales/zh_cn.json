@@ -62,13 +62,36 @@
         },
         "intentLabel": "意向参加项目",
         "tradingIntroLabel": "贸易描述",
-        "submitButton": "提交",
-        "resetButton": "重置",
         "gendersText": {
             "male": "男",
             "female": "女"
         },
         "selectDefaultOptionOptional": "-- 请选择(可选) --",
         "optional": "可选"
+    },
+    "errors": {
+        "internal": {
+            "title": "服务器错误",
+            "text": "请联系管理员"
+        },
+        "tokenExpired": {
+            "title": "登录超时",
+            "text": "请重新登录"
+        }
+    },
+    "login": {
+        "title": "登录",
+        "welcome": "欢迎回来",
+        "usernameLabel": "电话",
+        "usernamePlaceholder": "电话",
+        "passwordLabel": "密码",
+        "passwordPlaceholder": "密码",
+        "remember": "记住我"
+    },
+    "btn": {
+        "ok": "确定",
+        "cancel": "取消",
+        "submit": "提交",
+        "reset": "重置"
     }
 }

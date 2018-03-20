@@ -18,7 +18,7 @@ export default {
   methods: {
     test() {
       this.$axios
-        .$post("login", { username: "13675822217", password: "111111" })
+        .$post("logout", { username: "13675822217", password: "111111" })
         .then(resp => console.log(resp))
         .catch(resp => console.log(resp));
     }
