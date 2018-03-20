@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-container fluid class="pl-0 pr-0">
-      <b-navbar toggleable="sm" type="dark" variant="dark" class="px-md-2 px-lg-5 px-xl-5">
+      <b-navbar toggleable="sm" type="light" variant="light" class="px-md-2 px-lg-5 px-xl-5">
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
         <b-collapse is-nav id="nav_collapse" class="mr-lg-5">
           <b-navbar-nav class="ml-auto">

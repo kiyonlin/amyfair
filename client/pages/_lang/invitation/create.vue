@@ -186,7 +186,7 @@ export default {
     };
   },
   created() {
-    this.type = this.$route.query.type;
+    this.form.type = this.$route.query.type;
   },
   methods: {
     async onSubmit(evt) {
