@@ -20,7 +20,7 @@ class InvitationTest extends TestCase
     {
         create(Invitation::class);
 
-        $resp = $this->getJson(route('invitations.index'))->json();
+        $resp = $this->getJson(route('admin.invitations.index'))->json();
 
         $this->assertCount(1, $resp['data']);
     }

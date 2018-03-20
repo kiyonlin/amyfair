@@ -48,7 +48,6 @@ export const actions = {
     async fetchUser({ state, commit }) {
         try {
             const { data } = await this.$axios.$get('/user')
-            console.log(data);
             commit('FETCH_USER_SUCCESS', data)
         } catch (e) {
             Cookies.remove('token')

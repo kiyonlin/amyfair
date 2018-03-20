@@ -15,6 +15,14 @@
             <b-form-input id="fullName" v-model="form.fullName" required :placeholder="$t('invitation.fullNamePlaceholder')">
             </b-form-input>
           </b-form-group>
+          <b-form-group id="countryGroup" :label="$t('invitation.countryLabel')" label-for="country">
+            <b-form-input id="country" v-model="form.country" required :placeholder="$t('invitation.countryPlaceholder')">
+            </b-form-input>
+          </b-form-group>
+          <b-form-group id="industryGroup" :label="$t('invitation.industryLabel')" label-for="industry">
+            <b-form-input id="industry" v-model="form.industry" required :placeholder="$t('invitation.industryPlaceholder')">
+            </b-form-input>
+          </b-form-group>
           <b-form-group :label="$t('invitation.genderLabel')">
             <b-form-radio-group v-model="form.gender" :options="genders" name="gender">
             </b-form-radio-group>
@@ -58,14 +66,6 @@
             <b-form-input id="website" v-model="form.website" :placeholder="$t('invitation.optional')">
             </b-form-input>
           </b-form-group>
-          <b-form-group id="countryGroup" :label="$t('invitation.countryLabel')" label-for="country">
-            <b-form-input id="country" v-model="form.country" required :placeholder="$t('invitation.countryPlaceholder')">
-            </b-form-input>
-          </b-form-group>
-          <b-form-group id="industryGroup" :label="$t('invitation.industryLabel')" label-for="industry">
-            <b-form-input id="industry" v-model="form.industry" required :placeholder="$t('invitation.industryPlaceholder')">
-            </b-form-input>
-          </b-form-group>
           <b-form-group id="sourceGroup" :label="$t('invitation.sourceLabel')" label-for="source">
             <b-form-select id="source" v-model="form.source" :options="sources">
             </b-form-select>
@@ -87,6 +87,7 @@
 </template>
 
 <script>
+import swal from "sweetalert2";
 export default {
   // layout: "none",
   head() {
@@ -188,9 +189,18 @@ export default {
     this.type = this.$route.query.type;
   },
   methods: {
-    onSubmit(evt) {
+    async onSubmit(evt) {
       evt.preventDefault();
-      alert(JSON.stringify(this.form));
+      await this.$axios.$post("invitations", this.form);
+      swal({
+        type: "success",
+        text: this.$i18n.t("invitation.added"),
+        timer: 1500
+      }).then(_ => {
+        this.$router.push({
+          path: this.$i18n.path("")
+        });
+      });
     },
     onReset(evt) {
       console.log(evt);

@@ -17,7 +17,6 @@ Route::group(['namespace' => 'Auth'], function () {
 });
 
 Route::group(['namespace' => 'Invitation'], function () {
-    Route::get('invitations', 'InvitationController@index')->name('invitations.index');
     Route::post('invitations', 'InvitationController@store')->name('invitations.store');
 });
 
@@ -35,6 +34,10 @@ Route::group(['middleware' => 'auth-api'], function () {
 /******************************* admin routes **************************************/
 
 Route::group(['prefix' => 'admin'], function () {
+    Route::group(['namespace' => 'Invitation'], function () {
+        Route::get('invitations', 'InvitationController@index')->name('admin.invitations.index');
+    });
+
     Route::group(['namespace' => 'Auth'], function () {
         Route::post('login', 'AdminAuthorizationController@token')->name('admin.login');
     });

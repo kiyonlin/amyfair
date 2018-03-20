@@ -68,7 +68,8 @@
             "female": "Female"
         },
         "selectDefaultOptionOptional": "-- Please select an option (optional) --",
-        "optional": "Optional"
+        "optional": "Optional",
+        "added": "Thanks"
     },
     "errors": {
         "internal": {

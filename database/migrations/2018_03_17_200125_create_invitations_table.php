@@ -19,7 +19,7 @@ class CreateInvitationsTable extends Migration
             $table->string('fullName');
             $table->string('country');
             $table->string('industry');
-            $table->enum('gender', ['male', 'female']);
+            $table->enum('gender', ['male', 'female'])->nullable();
             $table->string('phone')->nullable();
             $table->string('qq')->nullable();
             $table->string('wechat')->nullable();
