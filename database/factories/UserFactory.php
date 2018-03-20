@@ -23,3 +23,13 @@ $factory->define(App\Modules\Auth\User::class, function (Faker $faker) {
         'forbidden'        => false,
     ];
 });
+
+$factory->define(App\Modules\Auth\Admin::class, function (Faker $faker) {
+    return [
+        'name'             => $faker->name,
+        'email'            => $faker->unique()->safeEmail,
+        'mobile'           => $faker->unique()->phoneNumber,
+        'password'         => Hash::make('111111'), // secret
+        'forbidden'        => false,
+    ];
+});

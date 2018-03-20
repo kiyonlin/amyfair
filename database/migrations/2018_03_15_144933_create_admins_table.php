@@ -17,6 +17,7 @@ class CreateAdminsTable extends Migration
             $table->string('email')->unique();
             $table->string('mobile')->unique();
             $table->string('password');
+            $table->boolean('forbidden')->default(false)->comment('is account forbidden');
             $table->timestamps();
         });
     }

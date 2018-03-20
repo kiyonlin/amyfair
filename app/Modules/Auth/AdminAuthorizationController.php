@@ -3,46 +3,43 @@
 namespace App\Modules\Auth;
 
 use Illuminate\Http\Request;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
 use App\Http\Controllers\ApiController;
 
 class AdminAuthorizationController extends ApiController
 {
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
-
-    public function token()
+    public function token(Request $request)
     {
         $validated = $this->validate(request(), [
-            'account'  => 'required|string|email|max:255|unique:admins',
-            'password' => 'required|string|min:6',
+            'username'  => 'required|max:255',
+            'password'  => 'required|min:6',
         ], [
+            'username.required' => 'usernameRequired',
+            'username.max'      => 'usernameMoreThan255',
+            'password.required' => 'passwordRequired',
+            'password.min'      => 'passwordLessThan6',
         ]);
-        $account = request('account');
-        $user = Admin::orWhere('email', $account)->orWhere('mobile', $account)->first();
 
-        if ($user && ($user->forbidden == true)) {
-            throw new UnauthorizedHttpException('', 'accountForbidden');
+        $username = request('username');
+        $admin = Admin::orWhere('email', $username)->orWhere('mobile', $username)->first();
+
+        if ($admin && ($admin->forbidden == true)) {
+            return $this->respondForbidden('accountForbidden');
         }
 
-        $client = new Client();
-        try {
-            $request = $client->request('POST', request()->root() . 'oauth/token', [
-                'form_params' => config('passport') + $validated + ['guard' => 'admin']
-            ]);
-        } catch (RequestException $e) {
-            throw new UnauthorizedHttpException('', 'Unauthorized');
+        $request->request->add(config('passport') + $validated + ['guard' => 'admin']);
+
+        $proxy = Request::create(
+            'oauth/token',
+            'POST'
+        );
+
+        $response = \Route::dispatch($proxy);
+
+        if ($response->getStatusCode() == 401) {
+            return $this->respondUnauthorized();
         }
 
-        if ($request->getStatusCode() == 401) {
-            throw  new UnauthorizedHttpException('', 'Unauthorized');
-        }
-
-        return $this->respond($request->getBody()->getContents());
+        return $this->respond(json_decode($response->getContent(), true));
     }
 
     public function logout()
@@ -52,5 +49,15 @@ class AdminAuthorizationController extends ApiController
         }
 
         return $this->respond('successToLogout');
+    }
+
+    /**
+     * get admin info.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function adminInfo()
+    {
+        return new UserResource(auth('admin')->user());
     }
 }

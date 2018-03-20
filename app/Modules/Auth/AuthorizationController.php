@@ -68,7 +68,6 @@ class AuthorizationController extends ApiController
      */
     public function userInfo()
     {
-        \Log::info(request()->header('Authorization'));
         return new UserResource(auth('api')->user());
     }
 }

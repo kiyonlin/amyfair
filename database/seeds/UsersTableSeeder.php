@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Modules\Auth\User;
+use App\Modules\Auth\Admin;
 
 class UsersTableSeeder extends Seeder
 {
@@ -13,6 +14,14 @@ class UsersTableSeeder extends Seeder
         User::truncate();
 
         create(User::class, [
+            'mobile' => 13675822217,
+            'email'  => 'kiyonlin@163.com',
+            'name'   => 'kiyon'
+        ]);
+
+        Admin::truncate();
+
+        create(Admin::class, [
             'mobile' => 13675822217,
             'email'  => 'kiyonlin@163.com',
             'name'   => 'kiyon'
