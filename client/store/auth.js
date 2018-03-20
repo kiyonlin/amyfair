@@ -11,6 +11,7 @@ export const getters = {
     token: state => state.token,
     refreshToken: state => state.refreshToken,
     check: state => state.user !== null,
+    admin: state => state.user.admin || false,
 }
 
 export const mutations = {
@@ -47,7 +48,7 @@ export const actions = {
     async fetchUser({ state, commit }) {
         try {
             const { data } = await this.$axios.$get('/user')
-
+            console.log(data);
             commit('FETCH_USER_SUCCESS', data)
         } catch (e) {
             Cookies.remove('token')

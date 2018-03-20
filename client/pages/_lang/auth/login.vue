@@ -33,6 +33,7 @@
 <script>
 import swal from "sweetalert2";
 export default {
+  middleware: "guest",
   head() {
     return {
       title: this.$t("links.login")

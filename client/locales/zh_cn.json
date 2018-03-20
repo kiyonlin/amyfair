@@ -11,7 +11,8 @@
         "login": "登录",
         "register": "注册",
         "logout": "退出",
-        "profile": "个人信息"
+        "profile": "个人信息",
+        "staff": "我是员工"
     },
     "home": {
         "title": "欢迎",
@@ -82,8 +83,8 @@
     "login": {
         "title": "登录",
         "welcome": "欢迎回来",
-        "usernameLabel": "电话",
-        "usernamePlaceholder": "电话",
+        "usernameLabel": "手机号码",
+        "usernamePlaceholder": "手机号码",
         "passwordLabel": "密码",
         "passwordPlaceholder": "密码",
         "remember": "记住我"
