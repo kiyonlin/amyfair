@@ -3,9 +3,24 @@
     <b-container fluid class="pl-0 pr-0">
       <b-navbar toggleable="sm" type="light" variant="light" class="px-md-2 px-lg-5 px-xl-5">
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+        <b-navbar-brand :to="$i18n.path('')" exact class="ml-lg-5 pl-lg-5">首页</b-navbar-brand>
         <b-collapse is-nav id="nav_collapse" class="mr-lg-5">
           <b-navbar-nav class="ml-auto">
-            <!-- Authenticated -->
+            <b-nav-item-dropdown right no-caret>
+              <template slot="button-content">
+                <fa icon="bell"/>
+                <b-badge v-if="notificationCount" 
+                  variant="danger" pill>
+                  {{ notificationCount }}
+                </b-badge>
+              </template>
+              <b-dropdown-item 
+                v-for="notification in notifications" 
+                :key="notification.id"
+                :href="notification.path">
+                {{ notification.text}}
+              </b-dropdown-item>
+            </b-nav-item-dropdown>
             <b-nav-item-dropdown right>
               <template slot="button-content">
                 <fa icon="user"/>
@@ -30,9 +45,22 @@
 import { mapGetters } from "vuex";
 
 export default {
-  computed: mapGetters({
-    user: "auth/user"
-  }),
+  data() {
+    return {
+      notifications: [
+        { id: "1", text: "notification1", path: "/admin/dashboard" },
+        { id: "2", text: "notification2", path: "/admin/dashboard" }
+      ]
+    };
+  },
+  computed: {
+    ...mapGetters({
+      user: "auth/user"
+    }),
+    notificationCount() {
+      return this.notifications.length;
+    }
+  },
 
   methods: {
     async logout() {
