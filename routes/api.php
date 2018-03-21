@@ -33,19 +33,10 @@ Route::group(['middleware' => 'auth-api'], function () {
 
 /******************************* admin routes **************************************/
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:api'], function () {
     Route::group(['namespace' => 'Invitation'], function () {
         Route::get('invitations', 'InvitationController@index')->name('admin.invitations.index');
-    });
-
-    Route::group(['namespace' => 'Auth'], function () {
-        Route::post('login', 'AdminAuthorizationController@token')->name('admin.login');
-    });
-
-    Route::group(['middleware' => 'auth-api'], function () {
-        Route::group(['namespace' => 'Auth'], function () {
-            Route::get('logout', 'AdminAuthorizationController@logout')->name('admin.logout');
-            Route::get('admin', 'AdminAuthorizationController@adminInfo')->name('admin.info');
-        });
+        Route::get('invitations/{invitation}', 'InvitationController@show')->name('admin.invitations.show');
+        Route::delete('invitations/{invitation}', 'InvitationController@destroy')->name('admin.invitations.destroy');
     });
 });

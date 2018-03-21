@@ -36,7 +36,7 @@ abstract class TestCase extends BaseTestCase
     {
         $admin = $admin ?: create(User::class, ['admin' => true]);
 
-        $this->actingAs($admin, 'admin');
+        $this->actingAs($admin, 'api');
 
         return $this;
     }

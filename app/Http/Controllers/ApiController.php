@@ -30,6 +30,12 @@ class ApiController extends Controller
             ->respondWithError($message);
     }
 
+    public function respondNoContent($message = 'noContent')
+    {
+        return $this->setStatusCode(SymfonyResponse::HTTP_NO_CONTENT)
+            ->respond($message);
+    }
+
     public function respondForbidden($message = 'forbidden')
     {
         return $this->setStatusCode(SymfonyResponse::HTTP_FORBIDDEN)

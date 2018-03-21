@@ -16,7 +16,7 @@ class InvitationController extends ApiController
     {
         $page = request('page', 1);
         $perPage = request('perPage', 15);
-        $columns = ['type', 'email', 'mobile', 'fullName',
+        $columns = ['id', 'type', 'email', 'mobile', 'fullName',
                     'country', 'industry', 'created_at'];
 
         return InvitationResource::collection(
@@ -34,5 +34,27 @@ class InvitationController extends ApiController
         $invitation = Invitation::create(request()->all());
 
         return new InvitationResource($invitation);
+    }
+
+    /**
+     * 获取邀请申请详情.
+     *
+     * @return InvitationResource
+     */
+    public function show(Invitation $invitation)
+    {
+        return new InvitationResource($invitation);
+    }
+
+    /**
+     * 删除邀请申请详情.
+     *
+     * return \Illuminate\Http\JsonResponse
+     */
+    public function destroy(Invitation $invitation)
+    {
+        $invitation->delete();
+
+        return $this->respondNoContent();
     }
 }
