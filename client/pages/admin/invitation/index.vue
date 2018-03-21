@@ -1,5 +1,21 @@
 <template>
   <div>
+    <b-container class="my-2">
+      <b-row>
+        <b-col md="2">
+          <b-btn-group>
+            <b-btn><fa icon="plus"/></b-btn>
+            <b-btn><fa icon="sync"/></b-btn>
+          </b-btn-group>
+        </b-col>
+        <b-col md="6" class="ml-auto text-right">
+          <b-btn-group>
+            <b-form-input></b-form-input>
+            <b-btn><fa icon="search"/></b-btn>
+          </b-btn-group>
+        </b-col>
+      </b-row>
+    </b-container>
     <b-table ref="table" show-empty empty-text="暂无数据" :items="itemsProvider" :currentPage="currentPage" :per-page="perPage" :fields="fields">
       <template slot="HEAD_select" slot-scope="data">
         <b-form-checkbox type="checkbox" @click.native.stop="toggleSelectAll" v-model="allSelected"/>
@@ -8,10 +24,10 @@
         <b-form-checkbox type="checkbox" name="checked" :key="row.index" @click.stop :value="row.item" v-model="checkedItems"/>
       </template>
       <template slot="actions" slot-scope="row">
-        <b-button size="sm" @click.stop="info(row.item, row.index, $event.target)" class="mr-1">
+        <b-button size="sm" @click.stop="info(row.item, row.index, $event.target)" class="mt-1">
           详情
         </b-button>
-        <b-button size="sm" variant="danger" @click.stop="remove(row.item, row.index)" class="mr-1">
+        <b-button size="sm" variant="danger" @click.stop="remove(row.item, row.index)" class="mt-1">
           删除
         </b-button>
       </template>
@@ -19,7 +35,8 @@
     <b-pagination align="center" :total-rows="total" :per-page="perPage" v-model="currentPage" />
 
     <!-- Info modal -->
-    <b-modal ref="detailModal" centered @hide="resetModal" :title="modalInfo.title" ok-only>
+    <b-modal ref="detailModal" ok-title="确定"
+             centered @hide="resetModal" :title="modalInfo.title" ok-only>
       <pre>{{ modalInfo.detail }}</pre>
     </b-modal>
   </div>
