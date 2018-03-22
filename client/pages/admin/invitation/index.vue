@@ -18,7 +18,7 @@
         </b-col>
       </b-row>
     </b-container>
-    <b-table ref="table" show-empty empty-text="暂无数据"
+    <b-table ref="table" show-empty empty-text="暂无数据" responsive
       :items="itemsProvider" :fields="fields"
       :currentPage="currentPage" :per-page="perPage">
       <template slot="HEAD_select" slot-scope="data">
@@ -58,7 +58,6 @@ export default {
       fields: [
         { key: "select", label: "select all" },
         { key: "type", label: "类型", sortable: true },
-        { key: "email", label: "邮箱" },
         { key: "mobile", label: "手机" },
         { key: "fullName", label: "姓名", sortable: true },
         { key: "country", label: "国家", sortable: true },
@@ -129,7 +128,7 @@ export default {
       this.query = {};
       this.refresh();
     },
-    async remove(item, index) {
+    async remove(item, index, ids = []) {
       let result = await swal({
         title: "确定删除吗?",
         text: "数据删除后将无法恢复!",
@@ -142,7 +141,8 @@ export default {
       });
 
       if (result.value) {
-        this.$axios.$delete(`admin/invitations/${item.id}`).then(() => {
+        let id = ids[0] || item.id;
+        this.$axios.$delete(`admin/invitations/${id}`, { ids }).then(() => {
           swal({
             title: "删除成功!",
             text: "数据已删除",
@@ -150,6 +150,8 @@ export default {
             timer: 1500
           });
           this.$refs.table.refresh();
+          // 批量删除时清除选择的项
+          if (ids) this.clearSelected();
         });
       } else if (result.dismiss === swal.DismissReason.cancel) {
         swal({ title: "取消", text: "删除已取消", type: "error", timer: 1000 });
@@ -165,6 +167,8 @@ export default {
         return;
       }
       let ids = this.checkedItems.map(item => item.id);
+
+      this.remove(null, null, ids);
     }
   },
   watch: {
