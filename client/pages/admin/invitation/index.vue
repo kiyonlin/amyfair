@@ -9,7 +9,7 @@
             <b-btn @click="batchRemove"><fa icon="trash"/></b-btn>
           </b-btn-group>
         </b-col>
-        <b-col md="1" class="ml-auto text-right">
+        <b-col md="1" class="ml-md-auto text-md-right my-1">
           <b-btn v-b-toggle.collapseSearch>筛选</b-btn>
         </b-col>
       </b-row>
@@ -17,7 +17,7 @@
     <b-collapse id="collapseSearch" class="my-2">
       <b-card>
         <b-row>
-          <b-col>
+          <b-col md="3">
             <b-form-group :label="$t('invitation.typeLabel')">
               <b-form-radio-group v-model="query.type" :options="'typesText' | text('invitation')" name="type">
               </b-form-radio-group>
@@ -25,36 +25,36 @@
           </b-col>
         </b-row>
         <b-row class="mt-2">
-          <b-col>
+          <b-col md="3">
             <b-form-group :label="$t('invitation.mobileLabel')" label-for="mobile">
               <b-form-input id="mobile" v-model="query.mobile"></b-form-input>
             </b-form-group>
           </b-col>
-          <b-col>
+          <b-col md="3">
             <b-form-group :label="$t('invitation.fullNameLabel')" label-for="fullName">
               <b-form-input id="fullName" v-model="query.fullName"></b-form-input>
             </b-form-group>
           </b-col>
-          <b-col>
+          <b-col md="3">
             <b-form-group :label="$t('invitation.countryLabel')" label-for="country">
               <b-form-input id="country" v-model="query.country"></b-form-input>
             </b-form-group>
           </b-col>
-          <b-col>
+          <b-col md="3">
             <b-form-group :label="$t('invitation.industryLabel')" label-for="industry">
               <b-form-input id="industry" v-model="query.industry"></b-form-input>
             </b-form-group>
           </b-col>
         </b-row>
         <b-row class="mt-2">
-          <b-col cols="2" class="ml-auto text-right">
+          <b-col md="4" class="ml-auto text-right">
               <b-btn @click="search" class="mr-1"><fa icon="search"/></b-btn>
               <b-btn @click="reset">{{ $t('btn.reset') }}</b-btn>
           </b-col>
         </b-row>
       </b-card>
     </b-collapse>
-    <b-table width="100%" ref="table" show-empty empty-text="暂无数据" responsive
+    <b-table width="100%" ref="table" show-empty empty-text="暂无数据" stacked="sm"
       :items="itemsProvider" :fields="fields"
       :currentPage="currentPage" :per-page="perPage">
       <template slot="HEAD_select" slot-scope="data">
@@ -75,16 +75,8 @@
         </b-button>
       </template>
     </b-table>
-    <b-container class="my-2">
-      <b-row>
-        <b-col md="6" class="ml-auto text-right">
-          <b-pagination align="right" :total-rows="total" :per-page="perPage" v-model="currentPage" />
-        </b-col>
-        <b-col md="1" class="text-right">
-          <b-form-select v-model="perPage" :options="perPageOptions"></b-form-select>
-        </b-col>
-      </b-row>
-    </b-container>
+    
+    <pagination :total="total" :per-page.sync="perPage" :current-page="currentPage" :per-page-options="perPageOptions"></pagination>
 
     <form-dialog :item-id.sync="currentItemId" :show.sync="showModal" :is-edit="isEdit"></form-dialog>
   </div>
@@ -94,9 +86,10 @@
 import swal from "sweetalert2";
 import qs from "qs";
 import formDialog from "./form";
+import Pagination from "~/components/global/Pagination";
 export default {
   layout: "admin",
-  components: { formDialog },
+  components: { formDialog, Pagination },
   data() {
     return {
       items: [],
@@ -114,7 +107,7 @@ export default {
       searched: false,
       currentPage: 1,
       perPage: 10,
-      perPageOptions: [10, 15, 20, 50],
+      perPageOptions: [10, 15, 20, 50, 100],
       total: 0,
       allSelected: false,
       checkedItems: [],

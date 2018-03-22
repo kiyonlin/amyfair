@@ -3,7 +3,7 @@
     <b-container fluid class="pl-0 pr-0">
       <b-navbar toggleable="sm" type="light" variant="light" class="px-md-2 px-lg-5 px-xl-5">
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-        <b-navbar-brand :to="$i18n.path('')" exact class="ml-lg-5 pl-lg-5">首页</b-navbar-brand>
+        <b-navbar-brand :to="$i18n.path('')" exact class="ml-md-5 pl-md-5">首页</b-navbar-brand>
         <b-collapse is-nav id="nav_collapse" class="mr-lg-5">
           <b-navbar-nav class="ml-auto">
             <b-nav-item-dropdown right no-caret>
