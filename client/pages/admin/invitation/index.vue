@@ -9,16 +9,52 @@
             <b-btn @click="batchRemove"><fa icon="trash"/></b-btn>
           </b-btn-group>
         </b-col>
-        <b-col md="6" class="ml-auto text-right">
-          <b-btn-group>
-            <b-form-input v-model="query.mobile"></b-form-input>
-            <b-btn @click="search"><fa icon="search"/></b-btn>
-            <b-btn @click="reset">重置</b-btn>
-          </b-btn-group>
+        <b-col md="1" class="ml-auto text-right">
+          <b-btn v-b-toggle.collapseSearch>筛选</b-btn>
         </b-col>
       </b-row>
     </b-container>
-    <b-table ref="table" show-empty empty-text="暂无数据" responsive
+    <b-collapse id="collapseSearch" class="my-2">
+      <b-card>
+        <b-row>
+          <b-col>
+            <b-form-group :label="$t('invitation.typeLabel')">
+              <b-form-radio-group v-model="query.type" :options="'typesText' | text('invitation')" name="type">
+              </b-form-radio-group>
+            </b-form-group>
+          </b-col>
+        </b-row>
+        <b-row class="mt-2">
+          <b-col>
+            <b-form-group :label="$t('invitation.mobileLabel')" label-for="mobile">
+              <b-form-input id="mobile" v-model="query.mobile"></b-form-input>
+            </b-form-group>
+          </b-col>
+          <b-col>
+            <b-form-group :label="$t('invitation.fullNameLabel')" label-for="fullName">
+              <b-form-input id="fullName" v-model="query.fullName"></b-form-input>
+            </b-form-group>
+          </b-col>
+          <b-col>
+            <b-form-group :label="$t('invitation.countryLabel')" label-for="country">
+              <b-form-input id="country" v-model="query.country"></b-form-input>
+            </b-form-group>
+          </b-col>
+          <b-col>
+            <b-form-group :label="$t('invitation.industryLabel')" label-for="industry">
+              <b-form-input id="industry" v-model="query.industry"></b-form-input>
+            </b-form-group>
+          </b-col>
+        </b-row>
+        <b-row class="mt-2">
+          <b-col cols="2" class="ml-auto text-right">
+              <b-btn @click="search" class="mr-1"><fa icon="search"/></b-btn>
+              <b-btn @click="reset">{{ $t('btn.reset') }}</b-btn>
+          </b-col>
+        </b-row>
+      </b-card>
+    </b-collapse>
+    <b-table width="100%" ref="table" show-empty empty-text="暂无数据" responsive
       :items="itemsProvider" :fields="fields"
       :currentPage="currentPage" :per-page="perPage">
       <template slot="HEAD_select" slot-scope="data">
@@ -39,7 +75,16 @@
         </b-button>
       </template>
     </b-table>
-    <b-pagination align="center" :total-rows="total" :per-page="perPage" v-model="currentPage" />
+    <b-container class="my-2">
+      <b-row>
+        <b-col md="6" class="ml-auto text-right">
+          <b-pagination align="right" :total-rows="total" :per-page="perPage" v-model="currentPage" />
+        </b-col>
+        <b-col md="1" class="text-right">
+          <b-form-select v-model="perPage" :options="perPageOptions"></b-form-select>
+        </b-col>
+      </b-row>
+    </b-container>
 
     <form-dialog :item-id.sync="currentItemId" :show.sync="showModal" :is-edit="isEdit"></form-dialog>
   </div>
@@ -68,7 +113,8 @@ export default {
       query: {},
       searched: false,
       currentPage: 1,
-      perPage: 2,
+      perPage: 10,
+      perPageOptions: [10, 15, 20, 50],
       total: 0,
       allSelected: false,
       checkedItems: [],
