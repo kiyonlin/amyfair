@@ -48,15 +48,16 @@ class InvitationController extends ApiController
 
     /**
      * 删除邀请申请详情.
+     * 支持批量删除.
      *
      * return \Illuminate\Http\JsonResponse
      */
     public function destroy(Invitation $invitation)
     {
-        if (empty($ids = request('ids'))) {
-            $invitation->delete();
-        } else {
+        if (!empty($ids = request('ids'))) {
             Invitation::whereIn('id', $ids)->delete();
+        } else {
+            $invitation->delete();
         }
 
         return $this->respondNoContent();
