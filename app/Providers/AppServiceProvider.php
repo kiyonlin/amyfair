@@ -30,5 +30,9 @@ class AppServiceProvider extends ServiceProvider
         Passport::routes(function (RouteRegistrar $router) {
             $router->forAccessTokens();
         });
+
+        Passport::tokensExpireIn(now()->addHours(8));
+
+        Passport::refreshTokensExpireIn(now()->addDay());
     }
 }
