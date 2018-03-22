@@ -123,11 +123,11 @@ export default {
       genders: [
         {
           text: this.$t("invitation.gendersText.male"),
-          value: "Male"
+          value: "male"
         },
         {
           text: this.$t("invitation.gendersText.female"),
-          value: "Female"
+          value: "female"
         }
       ],
       sources: [

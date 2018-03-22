@@ -27,6 +27,11 @@
         "register": "注册",
         "supplier": "我是供应商",
         "buyer": "我是采购商",
+        "typeLabel": "类型",
+        "typesText": {
+            "supplier": "供应商",
+            "buyer": "采购商"
+        },
         "emailLabel": "邮箱",
         "emailPlaceholder": "请输入您的电子邮件",
         "mobileLabel": "手机号码",

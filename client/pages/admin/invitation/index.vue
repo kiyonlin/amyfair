@@ -28,7 +28,7 @@
         <b-form-checkbox type="checkbox" name="checked" :key="row.index" @click.stop :value="row.item" v-model="checkedItems"/>
       </template>
       <template slot="actions" slot-scope="row">
-        <b-button size="sm" @click.stop="info(row.item, row.index, $event.target)" class="mt-1">
+        <b-button size="sm" @click.stop="showDetail(row.item, row.index, $event.target)" class="mt-1">
           详情
         </b-button>
         <b-button size="sm" variant="danger" @click.stop="remove(row.item, row.index)" class="mt-1">
@@ -38,22 +38,17 @@
     </b-table>
     <b-pagination align="center" :total-rows="total" :per-page="perPage" v-model="currentPage" />
 
-    <!-- <form-dialog></form-dialog> -->
-    <!-- Info modal -->
-    <b-modal ref="detailModal" ok-title="确定"
-             centered @hide="resetModal" :title="modalInfo.title" ok-only>
-      <pre>{{ modalInfo.detail }}</pre>
-    </b-modal>
+    <form-dialog :item-id.sync="currentItemId" :show.sync="showModal" :is-edit="isEdit"></form-dialog>
   </div>
 </template>
 
 <script>
 import swal from "sweetalert2";
 import qs from "qs";
-// import formDialog from "./form";
+import formDialog from "./form";
 export default {
   layout: "admin",
-  // components: { formDialog },
+  components: { formDialog },
   data() {
     return {
       items: [],
@@ -75,7 +70,9 @@ export default {
       total: 0,
       allSelected: false,
       checkedItems: [],
-      modalInfo: { title: "", detail: null }
+      showModal: false,
+      currentItemId: null,
+      isEdit: false
     };
   },
   methods: {
@@ -111,15 +108,14 @@ export default {
       this.allSelected = false;
       this.checkedItems = [];
     },
-    async info(item, index, button) {
-      this.modalInfo.title = "查看详情";
-      let { data } = await this.$axios.get(`admin/invitations/${item.id}`);
-      this.modalInfo.detail = data.data;
-      this.$refs.detailModal.show();
+    showDetail(item, index, button) {
+      this.isEdit = true;
+      this.showModal = true;
+      this.currentItemId = item.id;
     },
-    resetModal() {
-      this.modalInfo.title = "";
-      this.modalInfo.detail = null;
+    add() {
+      this.isEdit = false;
+      this.showModal = true;
     },
     refresh() {
       this.$refs.table.refresh();

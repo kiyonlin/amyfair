@@ -27,6 +27,11 @@
         "register": "register",
         "supplier": "IM A SUPPLIER",
         "buyer": "IM A BUYER",
+        "typeLabel": "type",
+        "typesText": {
+            "supplier": "supplier",
+            "buyer": "buyer"
+        },
         "emailLabel": "E-mail",
         "emailPlaceholder": "Your email",
         "mobileLabel": "Mobile",
