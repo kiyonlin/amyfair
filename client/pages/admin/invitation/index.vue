@@ -4,19 +4,23 @@
       <b-row>
         <b-col md="2">
           <b-btn-group>
-            <b-btn><fa icon="plus"/></b-btn>
-            <b-btn><fa icon="sync"/></b-btn>
+            <b-btn @click="add"><fa icon="plus"/></b-btn>
+            <b-btn @click="refresh"><fa icon="sync"/></b-btn>
+            <b-btn @click="batchRemove"><fa icon="trash"/></b-btn>
           </b-btn-group>
         </b-col>
         <b-col md="6" class="ml-auto text-right">
           <b-btn-group>
-            <b-form-input></b-form-input>
-            <b-btn><fa icon="search"/></b-btn>
+            <b-form-input v-model="query.mobile"></b-form-input>
+            <b-btn @click="search"><fa icon="search"/></b-btn>
+            <b-btn @click="reset">重置</b-btn>
           </b-btn-group>
         </b-col>
       </b-row>
     </b-container>
-    <b-table ref="table" show-empty empty-text="暂无数据" :items="itemsProvider" :currentPage="currentPage" :per-page="perPage" :fields="fields">
+    <b-table ref="table" show-empty empty-text="暂无数据"
+      :items="itemsProvider" :fields="fields"
+      :currentPage="currentPage" :per-page="perPage">
       <template slot="HEAD_select" slot-scope="data">
         <b-form-checkbox type="checkbox" @click.native.stop="toggleSelectAll" v-model="allSelected"/>
       </template>
@@ -34,6 +38,7 @@
     </b-table>
     <b-pagination align="center" :total-rows="total" :per-page="perPage" v-model="currentPage" />
 
+    <!-- <form-dialog></form-dialog> -->
     <!-- Info modal -->
     <b-modal ref="detailModal" ok-title="确定"
              centered @hide="resetModal" :title="modalInfo.title" ok-only>
@@ -44,8 +49,11 @@
 
 <script>
 import swal from "sweetalert2";
+import qs from "qs";
+// import formDialog from "./form";
 export default {
   layout: "admin",
+  // components: { formDialog },
   data() {
     return {
       items: [],
@@ -60,6 +68,8 @@ export default {
         { key: "created_at", label: "申请时间", sortable: true },
         { key: "actions", label: "操作" }
       ],
+      query: {},
+      searched: false,
       currentPage: 1,
       perPage: 2,
       total: 0,
@@ -73,11 +83,26 @@ export default {
       return value == "supplier" ? "供应" : "采购";
     },
     async itemsProvider(ctx) {
-      let params = "?page=" + ctx.currentPage + "&perPage=" + ctx.perPage;
-      let { data, meta } = await this.$axios.$get("admin/invitations" + params);
+      let { url, query } = this.getUrl(ctx);
+      let { data, meta } = await this.$axios.$get(url);
       this.total = meta.total;
       this.items = data;
+      this.$router.push({ query });
       return data;
+    },
+    getUrl(ctx) {
+      delete ctx.apiUrl;
+      delete ctx.filter;
+      let url = "admin/invitations";
+      let query = Object.assign({}, ctx);
+      if (this.searched) {
+        query = Object.assign(query, this.query);
+      }
+      let querystring = qs.stringify(query);
+      if (querystring) {
+        url += `?${querystring}`;
+      }
+      return { url, query };
     },
     toggleSelectAll() {
       this.checkedItems = this.allSelected ? [] : this.items;
@@ -95,6 +120,18 @@ export default {
     resetModal() {
       this.modalInfo.title = "";
       this.modalInfo.detail = null;
+    },
+    refresh() {
+      this.$refs.table.refresh();
+    },
+    search() {
+      this.searched = true;
+      this.refresh();
+    },
+    reset() {
+      this.searched = false;
+      this.query = {};
+      this.refresh();
     },
     async remove(item, index) {
       let result = await swal({
@@ -121,6 +158,17 @@ export default {
       } else if (result.dismiss === swal.DismissReason.cancel) {
         swal({ title: "取消", text: "删除已取消", type: "error", timer: 1000 });
       }
+    },
+    batchRemove() {
+      if (!this.checkedItems.length) {
+        swal({
+          text: "未选择项目",
+          type: "warning",
+          timer: 1000
+        });
+        return;
+      }
+      let ids = this.checkedItems.map(item => item.id);
     }
   },
   watch: {

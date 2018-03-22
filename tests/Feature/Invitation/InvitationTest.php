@@ -78,4 +78,24 @@ class InvitationTest extends TestCase
 
         $this->assertDatabaseMissing('invitations', ['id' => $invitation->id]);
     }
+
+    /** 
+     * 批量删除
+     * 
+     * @test 
+     */
+    public function admin_can_batch_delete_items()
+    {
+        $this->signInAdmin();
+
+        $invitations = create(Invitation::class, 4);
+
+        $this->deleteJson(route('admin.invitations.destroy', [
+            'invitation' => $invitations->random()->id,
+            'ids' => $invitations->pluck('id')->toArray()
+        ]))
+            ->assertStatus(Response::HTTP_NO_CONTENT);
+
+        $this->assertDatabaseMissing('invitations', ['id' => $invitations->random()->id]);
+    }
 }

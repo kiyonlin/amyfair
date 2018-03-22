@@ -14,7 +14,7 @@ class InvitationController extends ApiController
      */
     public function index()
     {
-        $page = request('page', 1);
+        $page = request('currentPage', 1);
         $perPage = request('perPage', 15);
         $columns = ['id', 'type', 'email', 'mobile', 'fullName',
                     'country', 'industry', 'created_at'];
@@ -53,7 +53,11 @@ class InvitationController extends ApiController
      */
     public function destroy(Invitation $invitation)
     {
-        $invitation->delete();
+        if (empty($ids = request('ids'))) {
+            $invitation->delete();
+        } else {
+            Invitation::whereIn('id', $ids)->delete();
+        }
 
         return $this->respondNoContent();
     }
