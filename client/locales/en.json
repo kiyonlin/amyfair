@@ -54,7 +54,7 @@
         "industryLabel": "Industry",
         "industryPlaceholder": "Industry",
         "sourceLabel": "Source(Optional)",
-        "sourceSelect": {
+        "sourcesText": {
             "associationAgency": "Association Agency",
             "cantonFairMerchants": "Canton Fair Merchants",
             "exhibitionCollection": "Exhibition Collection",
@@ -67,6 +67,9 @@
             "others": "Others"
         },
         "intentLabel": "Intent",
+        "intentsText": {
+            "0": "17th China International Consumer Goods Fair"
+        },
         "tradingIntroLabel": "Trading intro",
         "gendersText": {
             "male": "Male",

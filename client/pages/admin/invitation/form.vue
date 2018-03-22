@@ -2,7 +2,7 @@
   <b-modal ok-title="确定" cancel-title="取消" v-model="visiable" size="lg" centered lazy @hide="reset" :title="title">
     <b-form>
       <b-form-group :label="$t('invitation.typeLabel')">
-        <b-form-radio-group v-model="form.type" :options="types" name="type">
+        <b-form-radio-group v-model="form.type" :options="'typesText' | text('invitation')" name="type">
         </b-form-radio-group>
       </b-form-group>
       <b-form-group id="emailGroup" :label="$t('invitation.emailLabel')" label-for="email">
@@ -26,7 +26,7 @@
         </b-form-input>
       </b-form-group>
       <b-form-group :label="$t('invitation.genderLabel')">
-        <b-form-radio-group v-model="form.gender" :options="genders" name="gender">
+        <b-form-radio-group v-model="form.gender" :options="'gendersText' | text('invitation')" name="gender">
         </b-form-radio-group>
       </b-form-group>
       <b-form-group id="phoneGroup" :label="$t('invitation.phoneLabel')" label-for="phone">
@@ -69,11 +69,13 @@
         </b-form-input>
       </b-form-group>
       <b-form-group id="sourceGroup" :label="$t('invitation.sourceLabel')" label-for="source">
-        <b-form-select id="source" v-model="form.source" :options="sources">
+        <b-form-select id="source" v-model="form.source" :options="'sourcesText' | text('invitation')">
+          <option :value="null">{{ $t("invitation.selectDefaultOptionOptional") }}</option>
         </b-form-select>
       </b-form-group>
       <b-form-group id="intentGroup" :label="$t('invitation.intentLabel')" label-for="intent">
-        <b-form-select id="intent" v-model="form.intent" :options="intents">
+        <b-form-select id="intent" v-model="form.intent" :options="'intentsText' | text('invitation')">
+          <option :value="null">{{ $t("invitation.selectDefaultOptionOptional") }}</option>
         </b-form-select>
       </b-form-group>
       <b-form-group id="tradingIntroGroup" :label="$t('invitation.tradingIntroLabel')" label-for="tradingIntro">
@@ -96,80 +98,7 @@ export default {
   data() {
     return {
       visiable: false,
-      form: {},
-      types: [
-        {
-          text: this.$t("invitation.typesText.supplier"),
-          value: "supplier"
-        },
-        {
-          text: this.$t("invitation.typesText.buyer"),
-          value: "buyer"
-        }
-      ],
-      genders: [
-        {
-          text: this.$t("invitation.gendersText.male"),
-          value: "male"
-        },
-        {
-          text: this.$t("invitation.gendersText.female"),
-          value: "female"
-        }
-      ],
-      sources: [
-        {
-          text: this.$t("invitation.selectDefaultOptionOptional"),
-          value: ""
-        },
-        {
-          text: this.$t("invitation.sourceSelect.associationAgency"),
-          value: "associationAgency"
-        },
-        {
-          text: this.$t("invitation.sourceSelect.cantonFairMerchants"),
-          value: "cantonFairMerchants"
-        },
-        {
-          text: this.$t("invitation.sourceSelect.exhibitionCollection"),
-          value: "exhibitionCollection"
-        },
-        {
-          text: this.$t("invitation.sourceSelect.exhibitionProceedings"),
-          value: "exhibitionProceedings"
-        },
-        {
-          text: this.$t("invitation.sourceSelect.informationPlatform"),
-          value: "informationPlatform"
-        },
-        {
-          text: this.$t("invitation.sourceSelect.internetSearch"),
-          value: "internetSearch"
-        },
-        {
-          text: this.$t("invitation.sourceSelect.preRegistration"),
-          value: "preRegistration"
-        },
-        {
-          text: this.$t("invitation.sourceSelect.purchase"),
-          value: "purchase"
-        },
-        {
-          text: this.$t("invitation.sourceSelect.socialMedia"),
-          value: "socialMedia"
-        },
-        {
-          text: this.$t("invitation.sourceSelect.others"),
-          value: "others"
-        }
-      ],
-      intents: [
-        {
-          text: this.$t("invitation.selectDefaultOptionOptional"),
-          value: ""
-        },
-        "17th China International Consumer Goods Fair"
-      ]
+      form: {}
     };
   },
   watch: {

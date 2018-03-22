@@ -54,7 +54,7 @@
         "industryLabel": "行业",
         "industryPlaceholder": "请输入您的行业",
         "sourceLabel": "来源(可选)",
-        "sourceSelect": {
+        "sourcesText": {
             "associationAgency": "协会机构",
             "cantonFairMerchants": "广交会客商",
             "exhibitionCollection": "展会搜集",
@@ -67,6 +67,9 @@
             "others": "其他"
         },
         "intentLabel": "意向参加项目",
+        "intentsText": {
+            "0": "第17届中国国际日用消费品博览会"
+        },
         "tradingIntroLabel": "贸易描述",
         "gendersText": {
             "male": "男",

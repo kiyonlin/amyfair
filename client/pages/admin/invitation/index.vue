@@ -27,6 +27,9 @@
       <template slot="select" slot-scope="row">
         <b-form-checkbox type="checkbox" name="checked" :key="row.index" @click.stop :value="row.item" v-model="checkedItems"/>
       </template>
+      <template slot="type" slot-scope="row">
+        {{ row.value | text('invitation.typesText') }}
+      </template>
       <template slot="actions" slot-scope="row">
         <b-button size="sm" @click.stop="showDetail(row.item, row.index, $event.target)" class="mt-1">
           详情
@@ -54,7 +57,7 @@ export default {
       items: [],
       fields: [
         { key: "select", label: "select all" },
-        { key: "type", label: "类型", sortable: true, formatter: "typeText" },
+        { key: "type", label: "类型", sortable: true },
         { key: "email", label: "邮箱" },
         { key: "mobile", label: "手机" },
         { key: "fullName", label: "姓名", sortable: true },
@@ -76,9 +79,6 @@ export default {
     };
   },
   methods: {
-    typeText(value) {
-      return value == "supplier" ? "供应" : "采购";
-    },
     async itemsProvider(ctx) {
       let { url, query } = this.getUrl(ctx);
       let { data, meta } = await this.$axios.$get(url);
