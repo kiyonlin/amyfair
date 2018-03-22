@@ -54,6 +54,20 @@ export default {
     return {
       title: this.$t("home.title")
     };
+  },
+  data() {
+    return {
+      slide: 0,
+      sliding: null
+    };
+  },
+  methods: {
+    onSlideStart(slide) {
+      this.sliding = true;
+    },
+    onSlideEnd(slide) {
+      this.sliding = false;
+    }
   }
 };
 </script>
