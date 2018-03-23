@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VeeValidate, { Validator } from 'vee-validate';
-
+import en from 'vee-validate/dist/locale/en'
+import zh_CN from 'vee-validate/dist/locale/zh_CN'
 export default ({ app, store }) => {
     Validator.localize(app.i18n.locale);
 
@@ -9,7 +10,7 @@ export default ({ app, store }) => {
         // fieldsBagName: 'fields',
         delay: 100,
         // locale: app.i18n.locale,
-        // dictionary: null,
+        dictionary: { en, zh_CN },
         // strict: true,
         // classes: false,
         // classNames: {
@@ -24,7 +25,7 @@ export default ({ app, store }) => {
         // inject: true,
         // validity: false,
         // aria: true,
-        // i18n: null, // the vue-i18n plugin instance
+        i18n: app.i18n, // the vue-i18n plugin instance
         // i18nRootKey: 'validations' // the nested key under which the validation messages will be located
     };
     Vue.use(VeeValidate, config);
