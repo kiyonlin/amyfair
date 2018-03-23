@@ -73,6 +73,7 @@ module.exports = {
     plugins: [
         '~plugins/i18n.js',
         '~plugins/filter.js',
+        '~plugins/validation.js',
         '~plugins/axios.js',
         '~plugins/nuxt-client-init.js',
         '~plugins/fontawesome'

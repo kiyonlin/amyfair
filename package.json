@@ -25,6 +25,7 @@
         "lodash": "^4.17.5",
         "nuxt": "^1.0.0",
         "sweetalert2": "^7.16.0",
+        "vee-validate": "^2.0.6",
         "vue-i18n": "^7.5.0"
     },
     "devDependencies": {

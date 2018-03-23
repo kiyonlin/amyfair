@@ -20,7 +20,7 @@
               <b-dropdown-item :to="$i18n.locale === 'en' ? $route.fullPath : `/en` + $route.fullPath" exact>
                 {{ $t('links.english') }}
               </b-dropdown-item>
-              <b-dropdown-item :to="$i18n.locale === 'zh_cn' ? $route.fullPath : $route.fullPath.replace(/^\/[^\/]+/, '')" exact>
+              <b-dropdown-item :to="$i18n.locale === 'zh_CN' ? $route.fullPath : $route.fullPath.replace(/^\/[^\/]+/, '')" exact>
                 {{ $t('links.chinese') }}
               </b-dropdown-item>
             </b-nav-item-dropdown>

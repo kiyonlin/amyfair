@@ -4,8 +4,12 @@
       <b-col md="8" lg="8" sm="12">
         <b-form @submit="onSubmit" @reset="onReset" v-if="show">
           <b-form-group id="emailGroup" :label="$t('invitation.emailLabel')" label-for="email">
-            <b-form-input id="email" type="email" v-model="form.email" required :placeholder="$t('invitation.emailPlaceholder')">
+            <b-form-input id="email" name="email" v-model="form.email"
+             v-validate.initial="'required|email'"
+             :state="!errors.has('email')"
+             :placeholder="$t('invitation.emailPlaceholder')">
             </b-form-input>
+             <b-form-invalid-feedback>{{ errors.first('email') }}</b-form-invalid-feedback>
           </b-form-group>
           <b-form-group id="mobileGroup" :label="$t('invitation.mobileLabel')" label-for="mobile">
             <b-form-input id="mobile" v-model="form.mobile" required :placeholder="$t('invitation.mobilePlaceholder')">
@@ -104,6 +108,7 @@ export default {
   },
   data() {
     return {
+      email: "",
       show: true,
       type: null,
       form: {

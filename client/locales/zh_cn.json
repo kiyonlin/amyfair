@@ -39,7 +39,7 @@
         "fullNameLabel": "姓名",
         "fullNamePlaceholder": "请输入您的姓名",
         "passportNoLabel": "护照号码",
-        "passportNoPlaceholder": "请输入护照号码",
+        "passportNoPlaceholder": "请输入护照号码CN",
         "genderLabel": "性别",
         "phoneLabel": "电话",
         "imList": "即时通讯至少输入一项",
@@ -105,5 +105,10 @@
         "cancel": "取消",
         "submit": "提交",
         "reset": "重置"
+    },
+    "validations": {
+        "messages": {
+            "_default": "fff"
+        }
     }
 }

@@ -105,5 +105,10 @@
         "cancel": "Cancel",
         "submit": "Submit",
         "reset": "Reset"
+    },
+    "validations": {
+        "messages": {
+            "_default": "fff"
+        }
     }
 }
