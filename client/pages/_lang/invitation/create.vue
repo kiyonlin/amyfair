@@ -15,6 +15,10 @@
             <b-form-input id="fullName" v-model="form.fullName" required :placeholder="$t('invitation.fullNamePlaceholder')">
             </b-form-input>
           </b-form-group>
+          <b-form-group id="passportNoGroup" :label="$t('invitation.passportNoLabel')" label-for="passportNo">
+            <b-form-input id="passportNo" v-model="form.passportNo" required :placeholder="$t('invitation.passportNoPlaceholder')">
+            </b-form-input>
+          </b-form-group>
           <b-form-group id="countryGroup" :label="$t('invitation.countryLabel')" label-for="country">
             <b-form-input id="country" v-model="form.country" required :placeholder="$t('invitation.countryPlaceholder')">
             </b-form-input>

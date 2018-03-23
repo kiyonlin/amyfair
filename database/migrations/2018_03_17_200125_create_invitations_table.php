@@ -16,6 +16,7 @@ class CreateInvitationsTable extends Migration
             $table->enum('type', ['supplier', 'buyer'])->comment('申请类型');
             $table->string('email');
             $table->string('mobile');
+            $table->string('passportNo');
             $table->string('fullName');
             $table->string('country');
             $table->string('industry');

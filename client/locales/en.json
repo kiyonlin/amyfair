@@ -38,6 +38,8 @@
         "mobilePlaceholder": "Enter mobile",
         "fullNameLabel": "Full Name",
         "fullNamePlaceholder": "Enter fullName",
+        "passportNoLabel": "Passport No",
+        "passportNoPlaceholder": "Enter passport number",
         "genderLabel": "Gender",
         "phoneLabel": "Phone",
         "imList": "IM at least one",
