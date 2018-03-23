@@ -2,7 +2,7 @@ export default {
     props: {
         show: {
             type: Boolean,
-            required: true
+            // required: true
         },
         itemId: {
             type: Number,

@@ -5,7 +5,7 @@ module.exports = {
 
     env: {
         appName: process.env.APP_NAME || 'Amy fair',
-        API_URL: 'http://localhost:3000/api'
+        API_URL: 'http://amyfair.com/api'
     },
 
     /*
@@ -64,13 +64,6 @@ module.exports = {
         'bootstrap-vue/nuxt',
         '@nuxtjs/axios'
     ],
-    axios: {
-        proxy: true,
-    },
-    proxy: {
-        // 将 /api 为前缀的请求 代理到 'http://amyfair.debug/api'
-        '/api': process.env.APP_URL || 'http://amyfair.debug',
-    },
     router: {
         middleware: ['locale', 'check-auth']
     },

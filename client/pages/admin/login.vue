@@ -63,7 +63,6 @@ export default {
           type: "success",
           timer: 1500
         }).then(() => {
-          this.$store.dispatch("auth/fetchUser");
           // Redirect home.
           this.$router.push({ path: "/admin/dashboard" });
         });
