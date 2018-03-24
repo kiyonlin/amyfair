@@ -6,6 +6,8 @@ import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
 
 import {
     faUser,
+    faKey,
+    faMobile,
     faUserCircle,
     faLock,
     faSignOutAlt,
@@ -22,8 +24,8 @@ import { faGithub } from '@fortawesome/fontawesome-free-brands/shakable.es'
 fontawesome.config.autoAddCss = false
 
 fontawesome.library.add(
-    faUser, faUserCircle, faLock,
-    faSignOutAlt, faCog, faBell,
+    faUser, faKey, faUserCircle, faLock,
+    faSignOutAlt, faCog, faBell, faMobile,
     faPlus, faSearch, faSync, faTrash,
     faGithub,
 )

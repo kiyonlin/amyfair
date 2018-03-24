@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <b-container class="my-2">
-      <nuxt/>
-    </b-container>
-  </div>
+  <b-container class="my-2">
+    <nuxt/>
+  </b-container>
 </template>
 
 <script>

@@ -1,11 +1,10 @@
 <template>
-    <div class="row">
-        {{$t("links.register")}}
-    </div>
+  <div class="row">
+      {{$t("links.register")}}
+  </div>
 </template>
 
 <script>
-// import Form from "vform";
 export default {
   head() {
     return {

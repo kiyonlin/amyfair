@@ -1,18 +1,28 @@
 <template>
   <b-container>
-    <b-row>
+    <b-row align-v="center">
       <b-col offset-md="2" md="8" sm="12">
         <b-list-group>
           <b-list-group-item class="text-center">员工登录</b-list-group-item>
           <b-list-group-item>
             <b-form>
               <b-form-group id="usernameGroup" :label="$t('login.usernameLabel')" label-for="username">
-                <b-form-input id="username" v-model="form.username" required :placeholder="$t('login.usernamePlaceholder')">
-                </b-form-input>
+                <b-input-group>
+                  <b-input-group-text slot="prepend" style="width:42px">
+                    <fa icon="mobile" class="ml-1"/>
+                  </b-input-group-text>
+                  <b-form-input id="username" v-model="form.username" required :placeholder="$t('login.usernamePlaceholder')">
+                  </b-form-input>
+                </b-input-group>
               </b-form-group>
               <b-form-group id="passwordGroup" :label="$t('login.passwordLabel')" label-for="password">
-                <b-form-input id="password" type="password" v-model="form.password" required :placeholder="$t('login.passwordPlaceholder')">
-                </b-form-input>
+                <b-input-group>
+                  <b-input-group-text slot="prepend">
+                    <fa icon="key" />
+                  </b-input-group-text>
+                  <b-form-input id="password" type="password" v-model="form.password" required :placeholder="$t('login.passwordPlaceholder')">
+                  </b-form-input>
+                </b-input-group>
               </b-form-group>
               <b-form-group>
                 <b-form-checkbox-group>
