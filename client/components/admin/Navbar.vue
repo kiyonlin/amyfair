@@ -21,14 +21,14 @@
                 {{ notification.text}}
               </b-dropdown-item>
             </b-nav-item-dropdown>
-            <b-nav-item-dropdown right>
+            <b-nav-item-dropdown right v-if="user">
               <template slot="button-content">
                 <fa icon="user"/>
                 {{ user.email }}
               </template>
-              <b-dropdown-item :to="$i18n.path('setting/profile')">
+              <b-dropdown-item to="/admin/setting">
                 <fa icon="cog"/>
-                {{ $t('links.profile') }}
+                {{ $t('links.setting') }}
               </b-dropdown-item>
               <b-dropdown-item @click.prevent="logout">
                 <fa icon="sign-out-alt"/>

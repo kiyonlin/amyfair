@@ -21,7 +21,8 @@ class UserResource extends JsonResource
             'mobile'      => $this->mobile,
             'name'        => $this->name,
             'admin'       => !!$this->admin,
-            'created_at'  => $this->created_at
+            'created_at'  => $this->created_at,
+            'updated_at'  => $this->updated_at
         ];
     }
 }

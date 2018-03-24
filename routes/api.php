@@ -24,7 +24,7 @@ Route::get('test', function () {
     return 'test api';
 });
 
-Route::group(['middleware' => 'auth-api'], function () {
+Route::group(['middleware' => 'auth:api'], function () {
     Route::group(['namespace' => 'Auth'], function () {
         Route::get('logout', 'AuthorizationController@logout')->name('logout');
         Route::get('user', 'AuthorizationController@userInfo')->name('user.info');
@@ -38,5 +38,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api'], function () {
         Route::get('invitations', 'InvitationController@index')->name('admin.invitations.index');
         Route::get('invitations/{invitation}', 'InvitationController@show')->name('admin.invitations.show');
         Route::delete('invitations/{invitation}', 'InvitationController@destroy')->name('admin.invitations.destroy');
+    });
+
+    Route::group(['namespace' => 'Auth'], function () {
+        Route::put('users/{admin}', 'AdminController@update')->name('admin.update');
     });
 });

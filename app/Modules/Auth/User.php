@@ -5,6 +5,7 @@ namespace App\Modules\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -39,5 +40,15 @@ class User extends Authenticatable
     {
         return $this->orWhere('email', $account)
         ->orWhere('mobile', $account)->first();
+    }
+
+    /**
+     * 设置密码时进行加密.
+     *
+     * @param string $value
+     */
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = Hash::make($value);
     }
 }

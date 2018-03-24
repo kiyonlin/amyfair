@@ -33,7 +33,7 @@ export const mutations = {
         state.token = null
     },
 
-    UPDATE_USER(state, { user }) {
+    UPDATE_USER(state, user) {
         state.user = user
     }
 }

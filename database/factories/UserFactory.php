@@ -1,7 +1,6 @@
 <?php
 
 use Faker\Generator as Faker;
-use Illuminate\Support\Facades\Hash;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +18,7 @@ $factory->define(App\Modules\Auth\User::class, function (Faker $faker) {
         'name'             => $faker->name,
         'email'            => $faker->unique()->safeEmail,
         'mobile'           => $faker->unique()->phoneNumber,
-        'password'         => Hash::make('111111'), // secret
+        'password'         => '111111', // secret
         'forbidden'        => false,
         'admin'            => false,
     ];
@@ -30,7 +29,7 @@ $factory->define(App\Modules\Auth\Admin::class, function (Faker $faker) {
         'name'             => $faker->name,
         'email'            => $faker->unique()->safeEmail,
         'mobile'           => $faker->unique()->phoneNumber,
-        'password'         => Hash::make('111111'), // secret
+        'password'         => '111111', // secret
         'forbidden'        => false,
     ];
 });

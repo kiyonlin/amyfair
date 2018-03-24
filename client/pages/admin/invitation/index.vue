@@ -88,6 +88,11 @@ import Pagination from "~/components/global/Pagination";
 import collection from "~/mixins/collection";
 export default {
   layout: "admin",
+  head() {
+    return {
+      titleTemplate: `%s - 邀请`
+    };
+  },
   components: { formDialog, Pagination },
   mixins: [collection],
   data() {

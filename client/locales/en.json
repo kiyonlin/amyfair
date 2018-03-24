@@ -12,6 +12,7 @@
         "register": "register",
         "logout": "logout",
         "profile": "profile",
+        "setting": "setting",
         "staff": "Im a staff"
     },
     "home": {
