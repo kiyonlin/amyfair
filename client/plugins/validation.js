@@ -1,12 +1,14 @@
 import Vue from 'vue'
-import VeeValidate from 'vee-validate';
+import VeeValidate, { Validator } from 'vee-validate';
 import en from 'vee-validate/dist/locale/en'
 import zh_CN from 'vee-validate/dist/locale/zh_CN'
+import Rules from './validateRules';
+
 export default ({ app, store }) => {
 
     const config = {
         // errorBagName: 'errors', // change if property conflicts
-        // fieldsBagName: 'fields',
+        fieldsBagName: 'vfields',
         delay: 100,
         // locale: app.i18n.locale,
         dictionary: { en, zh_CN },
@@ -25,7 +27,13 @@ export default ({ app, store }) => {
         // validity: false,
         // aria: true,
         i18n: app.i18n, // the vue-i18n plugin instance
-        // i18nRootKey: 'validations' // the nested key under which the validation messages will be located
+        i18nRootKey: 'validations' // the nested key under which the validation messages will be located
     };
     Vue.use(VeeValidate, config);
+
+    // 注册自定义验证规则
+    // 验证的 messages 在 locales中
+    Object.keys(Rules).forEach(rule => {
+        Validator.extend(rule, Rules[rule]);
+    });
 }

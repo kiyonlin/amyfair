@@ -107,8 +107,12 @@
         "reset": "Reset"
     },
     "validations": {
+        "attributes": {
+            "passport_no": "passport number"
+        },
         "messages": {
-            "_default": "fff"
+            "_default": "field",
+            "passport_no": "passport number is invalid"
         }
     }
 }

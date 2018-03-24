@@ -2,32 +2,41 @@
   <b-modal ok-title="确定" cancel-title="取消" v-model="visiable" size="lg" centered lazy @hide="reset" :title="title">
     <b-form>
       <b-form-group :label="$t('invitation.typeLabel')">
-        <b-form-radio-group v-model="form.type" :options="'typesText' | text('invitation')" name="type">
+        <b-form-radio-group v-model="form.type" :options="'typesText' | text('invitation')" 
+          :name="$t('invitation.typeLabel')"            
+          v-validate.initial="'required'" :state="!errors.has($t('invitation.typeLabel'))">
         </b-form-radio-group>
+        <b-form-invalid-feedback>{{ errors.first($t('invitation.typeLabel')) }}</b-form-invalid-feedback>
       </b-form-group>
       <b-form-group id="emailGroup" :label="$t('invitation.emailLabel')" label-for="email">
-        <b-form-input id="email" type="email" v-model="form.email" required :placeholder="$t('invitation.emailPlaceholder')">
+        <b-form-input id="email" :name="$t('invitation.emailLabel')" v-model="form.email" v-validate.initial="'required|email'" :state="!errors.has($t('invitation.emailLabel'))" :placeholder="$t('invitation.emailPlaceholder')">
         </b-form-input>
+        <b-form-invalid-feedback>{{ errors.first($t('invitation.emailLabel')) }}</b-form-invalid-feedback>
       </b-form-group>
       <b-form-group id="mobileGroup" :label="$t('invitation.mobileLabel')" label-for="mobile">
-        <b-form-input id="mobile" v-model="form.mobile" required :placeholder="$t('invitation.mobilePlaceholder')">
+        <b-form-input id="mobile" :name="$t('invitation.mobileLabel')" v-model="form.mobile1" v-validate.initial="'required'" :state="!errors.has($t('invitation.mobileLabel'))" :placeholder="$t('invitation.mobilePlaceholder')">
         </b-form-input>
+        <b-form-invalid-feedback>{{ errors.first($t('invitation.mobileLabel')) }}</b-form-invalid-feedback>
       </b-form-group>
       <b-form-group id="fullNameGroup" :label="$t('invitation.fullNameLabel')" label-for="fullName">
-        <b-form-input id="fullName" v-model="form.fullName" required :placeholder="$t('invitation.fullNamePlaceholder')">
+        <b-form-input id="fullName" :name="$t('invitation.fullNameLabel')" v-model="form.fullName" v-validate.initial="'required'" :state="!errors.has($t('invitation.fullNameLabel'))" :placeholder="$t('invitation.fullNamePlaceholder')">
         </b-form-input>
+        <b-form-invalid-feedback>{{ errors.first($t('invitation.fullNameLabel')) }}</b-form-invalid-feedback>
       </b-form-group>
       <b-form-group id="passportNoGroup" :label="$t('invitation.passportNoLabel')" label-for="passportNo">
-        <b-form-input id="passportNo" v-model="form.passportNo" required :placeholder="$t('invitation.passportNoPlaceholder')">
+        <b-form-input id="passportNo" :name="$t('invitation.passportNoLabel')" v-model="form.passportNo" v-validate.initial="'required|passport_no'" :state="!errors.has($t('invitation.passportNoLabel'))" :placeholder="$t('invitation.passportNoPlaceholder')">
         </b-form-input>
+        <b-form-invalid-feedback>{{ errors.first($t('invitation.passportNoLabel')) }}</b-form-invalid-feedback>
       </b-form-group>
       <b-form-group id="countryGroup" :label="$t('invitation.countryLabel')" label-for="country">
-        <b-form-input id="country" v-model="form.country" required :placeholder="$t('invitation.countryPlaceholder')">
+        <b-form-input id="country" :name="$t('invitation.countryLabel')" v-model="form.country" v-validate.initial="'required'" :state="!errors.has($t('invitation.countryLabel'))" :placeholder="$t('invitation.countryPlaceholder')">
         </b-form-input>
+        <b-form-invalid-feedback>{{ errors.first($t('invitation.countryLabel')) }}</b-form-invalid-feedback>
       </b-form-group>
       <b-form-group id="industryGroup" :label="$t('invitation.industryLabel')" label-for="industry">
-        <b-form-input id="industry" v-model="form.industry" required :placeholder="$t('invitation.industryPlaceholder')">
+        <b-form-input id="industry" :name="$t('invitation.industryLabel')" v-model="form.industry" v-validate.initial="'required'" :state="!errors.has($t('invitation.industryLabel'))" :placeholder="$t('invitation.industryPlaceholder')">
         </b-form-input>
+        <b-form-invalid-feedback>{{ errors.first($t('invitation.industryLabel')) }}</b-form-invalid-feedback>
       </b-form-group>
       <b-form-group :label="$t('invitation.genderLabel')">
         <b-form-radio-group v-model="form.gender" :options="'gendersText' | text('invitation')" name="gender">

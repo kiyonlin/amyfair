@@ -29,7 +29,7 @@
           </b-form-group>
           <b-form-group id="passportNoGroup" :label="$t('invitation.passportNoLabel')" label-for="passportNo">
             <b-form-input id="passportNo" :name="$t('invitation.passportNoLabel')" v-model="form.passportNo" 
-              v-validate.initial="'required'"
+              v-validate.initial="'required|passport_no'"
               :state="!errors.has($t('invitation.passportNoLabel'))" 
               :placeholder="$t('invitation.passportNoPlaceholder')">
             </b-form-input>

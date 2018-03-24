@@ -107,8 +107,11 @@
         "reset": "重置"
     },
     "validations": {
+        "attributes": {
+            "passport_no": "护照号码"
+        },
         "messages": {
-            "_default": "fff"
+            "passport_no": "护照号码 有误"
         }
     }
 }
