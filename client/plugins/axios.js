@@ -3,7 +3,7 @@ import swal from 'sweetalert2'
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
-export default ({ app, store, redirect, $axios }) => {
+export default ({ app, store, redirect, $axios, route }) => {
     $axios.defaults.baseURL = process.env.API_URL || 'http://localhost:3000/api';
 
     $axios.onRequest(config => {
@@ -41,6 +41,18 @@ export default ({ app, store, redirect, $axios }) => {
                 await store.dispatch('auth/logout')
 
                 redirect({ name: 'auth/login' })
+            })
+        }
+
+        if (status == 401) {
+            swal({
+                type: 'error',
+                title: app.i18n.t('errors.unauthorized.title'),
+                text: app.i18n.t('errors.unauthorized.text'),
+                reverseButtons: true,
+                confirmButtonText: app.i18n.t('btn.ok'),
+                cancelButtonText: app.i18n.t('btn.cancel'),
+                timer: 1500
             })
         }
     })
