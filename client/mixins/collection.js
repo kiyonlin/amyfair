@@ -82,7 +82,7 @@ export default {
 
             if (result.value) {
                 let id = ids[0] || item.id;
-                this.$axios.$delete(`${this.path}/${id}`, { ids }).then(() => {
+                this.$axios.$delete(`${this.path}/${id}`, { data: { ids } }).then(() => {
                     swal({
                         title: "删除成功!",
                         text: "数据已删除",
@@ -107,7 +107,6 @@ export default {
                 return;
             }
             let ids = this.checkedItems.map(item => item.id);
-
             this.remove(null, null, ids);
         }
     },
