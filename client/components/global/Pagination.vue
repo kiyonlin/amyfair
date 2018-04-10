@@ -35,6 +35,7 @@ export default {
   watch: {
     innerPerPage(fresh) {
       this.$emit("update:perPage", fresh);
+      this.$emit("update:currentPage", 1);
     },
     innerCurrentPage(fresh) {
       this.$emit("update:currentPage", fresh);
