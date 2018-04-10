@@ -12,7 +12,7 @@
              <b-form-invalid-feedback>{{ errors.first($t('invitation.emailLabel')) }}</b-form-invalid-feedback>
           </b-form-group>
           <b-form-group id="mobileGroup" :label="$t('invitation.mobileLabel')" label-for="mobile">
-            <b-form-input id="mobile" :name="$t('invitation.mobileLabel')" v-model="form.mobile1" 
+            <b-form-input id="mobile" :name="$t('invitation.mobileLabel')" v-model="form.mobile" 
               v-validate.initial="'required'"
               :state="!errors.has($t('invitation.mobileLabel'))"
               :placeholder="$t('invitation.mobilePlaceholder')">

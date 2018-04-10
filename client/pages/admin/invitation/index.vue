@@ -76,7 +76,7 @@
       </template>
     </b-table>
     
-    <pagination :total="total" :per-page.sync="perPage" :current-page="currentPage" :per-page-options="perPageOptions"></pagination>
+    <pagination :total="total" :per-page.sync="perPage" :current-page.sync="currentPage" :per-page-options="perPageOptions"></pagination>
 
     <form-dialog :item-id.sync="currentItemId" :show.sync="showModal" :is-edit="isEdit" :path="path"></form-dialog>
   </div>
