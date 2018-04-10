@@ -85,11 +85,15 @@
     "errors": {
         "internal": {
             "title": "Internal Server Error",
-            "text": "You can contact the administrator"
+            "text": "You can contact the administrator."
         },
         "tokenExpired": {
             "title": "Login Timeout",
-            "text": "Please login again"
+            "text": "Please login again."
+        },
+        "unauthorized": {
+            "title": "Unauthorized",
+            "text": "Username or password is incorrect."
         }
     },
     "login": {

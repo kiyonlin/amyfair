@@ -85,11 +85,15 @@
     "errors": {
         "internal": {
             "title": "服务器错误",
-            "text": "请联系管理员"
+            "text": "请联系管理员。"
         },
         "tokenExpired": {
             "title": "登录超时",
-            "text": "请重新登录"
+            "text": "请重新登录。"
+        },
+        "unauthorized": {
+            "title": "登录失败——认证错误",
+            "text": "账号或密码不正确。"
         }
     },
     "login": {
