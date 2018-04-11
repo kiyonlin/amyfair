@@ -131,50 +131,41 @@ export default {
       email: "",
       show: true,
       type: null,
-      form: {
-        email: "",
-        mobile: "",
-        fullName: "",
-        gender: "",
-        phone: "",
-        qq: "",
-        wechat: "",
-        whatsapp: "",
-        skype: "",
-        facebook: "",
-        corpName: "",
-        corpAddr: "",
-        website: "",
-        country: "",
-        industry: "",
-        source: "",
-        intent: "",
-        tradingIntro: ""
-      }
+      form: {}
     };
   },
   created() {
     this.form.type = this.$route.query.type;
   },
   methods: {
-    async onSubmit(evt) {
+    onSubmit(evt) {
       evt.preventDefault();
-      await this.$axios.$post("invitations", this.form);
-      swal({
-        type: "success",
-        text: this.$i18n.t("invitation.added"),
-        timer: 1500
-      }).then(_ => {
-        this.$router.push({
-          path: this.$i18n.path("")
-        });
+      this.$validator.validateAll().then(async result => {
+        if (result) {
+          await this.$axios.$post("invitations", this.form);
+          swal({
+            type: "success",
+            text: this.$i18n.t("invitation.added"),
+            timer: 1500
+          }).then(_ => {
+            this.$router.push({
+              path: this.$i18n.path("")
+            });
+          });
+          return;
+        }
+        // scroll to first validate error
+        this.$el
+          .querySelector(
+            '[data-vv-id="' + this.$validator.errors.items[0].id + '"]'
+          )
+          .scrollIntoView(false);
       });
     },
     onReset(evt) {
-      console.log(evt);
       evt.preventDefault();
       /* Reset our form values */
-      this.form.email = "";
+      this.form = {};
       /* Trick to reset/clear native browser form validation state */
       this.show = false;
       this.$nextTick(() => {
