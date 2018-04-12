@@ -108,7 +108,7 @@
             <b-form-textarea id="tradingIntro" v-model="form.tradingIntro" :rows="5" :max-rows="5" :placeholder="$t('invitation.optional')">
             </b-form-textarea>
           </b-form-group>
-          <b-button type="submit" variant="primary" class="m-3">{{$t('btn.submit')}}</b-button>
+          <b-button type="submit" variant="primary" :disabled="!canSubmit" class="m-3">{{$t('btn.submit')}}</b-button>
           <b-button type="reset" variant="danger" class="m-3">{{$t('btn.reset')}}</b-button>
         </b-form>
       </b-col>
@@ -128,7 +128,6 @@ export default {
   },
   data() {
     return {
-      email: "",
       show: true,
       type: null,
       form: {}
@@ -136,6 +135,11 @@ export default {
   },
   created() {
     this.form.type = this.$route.query.type;
+  },
+  computed: {
+    canSubmit() {
+      return this.$validator.errors.items.length == 0;
+    }
   },
   methods: {
     onSubmit(evt) {
