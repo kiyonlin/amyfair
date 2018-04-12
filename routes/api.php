@@ -40,6 +40,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api'], function () {
         Route::delete('invitations/{invitation}', 'InvitationController@destroy')->name('admin.invitations.destroy');
     });
 
+    Route::group(['namespace' => 'Exhibition'], function () {
+        Route::get('exhibitions', 'ExhibitionController@index')->name('admin.exhibitions.index');
+        Route::post('exhibitions', 'ExhibitionController@store')->name('admin.exhibitions.store');
+        Route::get('exhibitions/{exhibition}', 'ExhibitionController@show')->name('admin.exhibitions.show');
+        Route::put('exhibitions/{exhibition}', 'ExhibitionController@update')->name('admin.exhibitions.update');
+    });
+
     Route::group(['namespace' => 'Auth'], function () {
         Route::put('users/{admin}', 'AdminController@update')->name('admin.update');
     });

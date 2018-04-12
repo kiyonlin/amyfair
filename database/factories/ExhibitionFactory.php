@@ -10,6 +10,7 @@ $factory->define(App\Modules\Exhibition\Exhibition::class, function (Faker $fake
         'address_en'       => $faker->address,
         'main_products'    => $faker->sentence,
         'main_products_en' => $faker->sentence,
+        'rating'           => 0,
         'start_at'         => now()->addMonth(),
         'end_at'           => now()->addMonth()->addDays(3),
     ];

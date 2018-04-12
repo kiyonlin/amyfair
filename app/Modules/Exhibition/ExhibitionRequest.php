@@ -24,7 +24,14 @@ class ExhibitionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'             => 'required',
+            'name_en'          => 'required',
+            'address'          => 'required',
+            'address_en'       => 'required',
+            'main_products'    => 'required',
+            'main_products_en' => 'required',
+            'start_at'         => 'required',
+            'end_at'           => 'required'
         ];
     }
 }
