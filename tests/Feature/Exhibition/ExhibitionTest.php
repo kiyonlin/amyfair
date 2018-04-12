@@ -5,16 +5,18 @@ namespace Tests\Feature\Exhibition;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Modules\Exhibition\Exhibition;
 
 class ExhibitionTest extends TestCase
 {
+    use WithFaker, RefreshDatabase;
+
     /**
      * A basic test example.
-     *
-     * @return void
      */
     public function testExample()
     {
-        $this->assertTrue(true);
+        $exhibition = create(Exhibition::class);
+        dd($exhibition->toArray());
     }
 }
