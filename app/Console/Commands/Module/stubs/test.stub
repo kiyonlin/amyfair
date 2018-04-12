@@ -8,6 +8,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class DummyClassTest extends TestCase
 {
+    use WithFaker, RefreshDatabase;
+    
     /**
      * A basic test example.
      *
