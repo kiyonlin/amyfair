@@ -96,12 +96,12 @@
           </b-form-group>
           <b-form-group id="sourceGroup" :label="$t('invitation.sourceLabel')" label-for="source">
             <b-form-select id="source" v-model="form.source" :options="'sourcesText' | text('invitation')">
-              <option :value="''">{{ $t("invitation.selectDefaultOptionOptional") }}</option>
+              <option value="undefined">{{ $t("invitation.selectDefaultOptionOptional") }}</option>
             </b-form-select>
           </b-form-group>
           <b-form-group id="intentGroup" :label="$t('invitation.intentLabel')" label-for="intent">
             <b-form-select id="intent" v-model="form.intent" :options="'intentsText' | text('invitation')">
-              <option :value="''">{{ $t("invitation.selectDefaultOptionOptional") }}</option>
+              <option value="undefined">{{ $t("invitation.selectDefaultOptionOptional") }}</option>
             </b-form-select>
           </b-form-group>
           <b-form-group id="tradingIntroGroup" :label="$t('invitation.tradingIntroLabel')" label-for="tradingIntro">
