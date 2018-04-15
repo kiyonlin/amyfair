@@ -57,4 +57,21 @@ class ExhibitionController extends ApiController
 
         return new ExhibitionResource($exhibition);
     }
+
+    /**
+     * 删除展会.
+     * 支持批量删除.
+     *
+     * return \Illuminate\Http\JsonResponse
+     */
+    public function destroy(Exhibition $exhibition)
+    {
+        if (!empty($ids = request('ids'))) {
+            Exhibition::whereIn('id', $ids)->delete();
+        } else {
+            $exhibition->delete();
+        }
+
+        return $this->respondNoContent();
+    }
 }

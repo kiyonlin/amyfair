@@ -11,13 +11,23 @@ class Exhibition extends Model
         'name_en', 'address_en', 'main_products_en'
     ];
 
-    /**
-     * 应被转换为日期的属性。
-     *
-     * @var array
-     */
-    protected $dates = [
-        'start_at',
-        'end_at',
-    ];
+    public function getStartAtAttribute($value)
+    {
+        if ($value) {
+            return $this->attributes['start_at'] = is_string($value) ?
+                substr($value, 0, 10) :
+                substr($value->toDateTimeString(), 0, 10);
+        }
+        return $value;
+    }
+
+    public function getEndAtAttribute($value)
+    {
+        if ($value) {
+            return $this->attributes['end_at'] = is_string($value) ?
+                substr($value, 0, 10) :
+                substr($value->toDateTimeString(), 0, 10);
+        }
+        return $value;
+    }
 }
