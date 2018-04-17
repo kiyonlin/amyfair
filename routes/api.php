@@ -45,6 +45,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api'], function () {
         Route::post('exhibitions', 'ExhibitionController@store')->name('admin.exhibitions.store');
         Route::get('exhibitions/{exhibition}', 'ExhibitionController@show')->name('admin.exhibitions.show');
         Route::put('exhibitions/{exhibition}', 'ExhibitionController@update')->name('admin.exhibitions.update');
+        Route::delete('exhibitions/{exhibition}', 'ExhibitionController@destroy')->name('admin.exhibitions.destroy');
     });
 
     Route::group(['namespace' => 'Auth'], function () {
