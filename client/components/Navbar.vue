@@ -17,10 +17,10 @@
               <b-button size="sm" class="my-2 my-sm-0" type="submit">{{ $t('links.search') }}</b-button>
             </b-nav-form>
             <b-nav-item-dropdown :text="$t('links.lang')" right>
-              <b-dropdown-item :to="$i18n.locale === 'en' ? $route.fullPath : `/en` + $route.fullPath" exact>
+              <b-dropdown-item :to="$i18n.locale === 'en' ? $route.fullPath : $route.fullPath.replace(/^\/[^\/]+/, '')" exact>
                 {{ $t('links.english') }}
               </b-dropdown-item>
-              <b-dropdown-item :to="$i18n.locale === 'zh_CN' ? $route.fullPath : $route.fullPath.replace(/^\/[^\/]+/, '')" exact>
+              <b-dropdown-item :to="$i18n.locale === 'zh_CN' ? $route.fullPath : `/zh_CN` + $route.fullPath" exact>
                 {{ $t('links.chinese') }}
               </b-dropdown-item>
             </b-nav-item-dropdown>
@@ -56,13 +56,15 @@
 import { mapGetters } from "vuex";
 
 export default {
-  data: () => ({
-    appName: process.env.appName
-  }),
-
-  computed: mapGetters({
-    user: "auth/user"
-  }),
+  computed: {
+    ...mapGetters({
+      user: "auth/user",
+      lang: "lang/locale"
+    }),
+    appName() {
+      return this.lang == "en" ? process.env.appNameEn : process.env.appName;
+    }
+  },
 
   methods: {
     async logout() {
