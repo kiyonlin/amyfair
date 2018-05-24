@@ -40,7 +40,7 @@
       </b-form-group>
       <b-form-group id="intentGroup" :label="$t('invitation.intentLabel')" label-for="intent">
         <b-form-select id="intent" v-model="form.intent" :options="intentOptions" value-field="id" :text-field="intentOptionTextField">
-          <option :value="null">{{ $t("invitation.selectDefaultOption") }}</option>
+          <option value="">{{ $t("invitation.selectDefaultOption") }}</option>
         </b-form-select>
       </b-form-group>
       <b-form-group :label="$t('invitation.genderLabel')">

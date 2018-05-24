@@ -56,6 +56,9 @@ export default {
                 this.form = {};
                 this.$emit("update:show", false);
                 this.$emit("update:itemId", null);
+            } else {
+                this.$emit("update:show", false);
+                this.$emit("update:itemId", null);
             }
         },
         store() {
