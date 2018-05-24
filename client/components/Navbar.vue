@@ -4,7 +4,7 @@
       <b-navbar toggleable="sm" type="dark" variant="info" class="px-md-2 px-lg-5 px-xl-5" fixed="top">
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
         <b-navbar-brand :to="$i18n.path('')" exact class="ml-lg-5">
-          <b-img src="./band_200.png" width="27" height="27"></b-img>
+          <b-img src="/band_200.png" width="27" height="27"></b-img>
           {{appName}}
         </b-navbar-brand>
         <b-collapse is-nav id="nav_collapse" class="mr-lg-5">

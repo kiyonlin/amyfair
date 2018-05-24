@@ -6,7 +6,7 @@ module.exports = {
     env: {
         appNameEn: 'Amy fair',
         appName: '博裕会展',
-        API_URL: 'http://api.amyfairgroup.com'
+        API_URL: 'http://api.amyfairgroup.com/api'
     },
 
     /*
