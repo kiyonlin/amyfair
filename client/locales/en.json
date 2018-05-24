@@ -79,6 +79,7 @@
             "female": "Female"
         },
         "selectDefaultOptionOptional": "-- Please select an option (optional) --",
+        "selectDefaultOption": "-- Please select an option --",
         "optional": "Optional",
         "added": "Thanks"
     },

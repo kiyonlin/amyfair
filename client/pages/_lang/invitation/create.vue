@@ -51,6 +51,14 @@
             </b-form-input>
              <b-form-invalid-feedback>{{ errors.first($t('invitation.industryLabel')) }}</b-form-invalid-feedback>
           </b-form-group>
+          <b-form-group id="intentGroup" :label="$t('invitation.intentLabel')" label-for="intent">
+            <b-form-select id="intent" :name="$t('invitation.intentLabel')" v-model="form.intent"
+              v-validate.initial="'required'" :state="!errors.has($t('invitation.intentLabel'))" 
+              :options="intentOptions" value-field="id" :text-field="intentOptionTextField">
+              <option value="undefined">{{ $t("invitation.selectDefaultOption") }}</option>
+            </b-form-select>
+            <b-form-invalid-feedback>{{ errors.first($t('invitation.intentLabel')) }}</b-form-invalid-feedback>
+          </b-form-group>
           <b-form-group :label="$t('invitation.genderLabel')">
             <b-form-radio-group v-model="form.gender" :options="'gendersText' | text('invitation')" name="gender">
             </b-form-radio-group>
@@ -99,11 +107,6 @@
               <option value="undefined">{{ $t("invitation.selectDefaultOptionOptional") }}</option>
             </b-form-select>
           </b-form-group>
-          <b-form-group id="intentGroup" :label="$t('invitation.intentLabel')" label-for="intent">
-            <b-form-select id="intent" v-model="form.intent" :options="'intentsText' | text('invitation')">
-              <option value="undefined">{{ $t("invitation.selectDefaultOptionOptional") }}</option>
-            </b-form-select>
-          </b-form-group>
           <b-form-group id="tradingIntroGroup" :label="$t('invitation.tradingIntroLabel')" label-for="tradingIntro">
             <b-form-textarea id="tradingIntro" v-model="form.tradingIntro" :rows="5" :max-rows="5" :placeholder="$t('invitation.optional')">
             </b-form-textarea>
@@ -130,15 +133,22 @@ export default {
     return {
       show: true,
       type: null,
-      form: {}
+      form: {},
+      intentOptions: []
     };
   },
   created() {
     this.form.type = this.$route.query.type;
+    this.$axios.$get("exhibitions/invitations").then(({ data }) => {
+      this.intentOptions = data;
+    });
   },
   computed: {
     canSubmit() {
       return this.$validator.errors.items.length == 0;
+    },
+    intentOptionTextField() {
+      return this.$i18n.locale == "en" ? "name_en" : "name";
     }
   },
   methods: {

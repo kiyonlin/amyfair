@@ -43,7 +43,9 @@ class InvitationController extends ApiController
      */
     public function show(Invitation $invitation)
     {
-        return new InvitationResource($invitation);
+        return new InvitationResource($invitation->load(['exhibition' => function ($query) {
+            $query->select(['id', 'name']);
+        }]));
     }
 
     /**
