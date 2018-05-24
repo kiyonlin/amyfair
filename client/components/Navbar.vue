@@ -3,7 +3,10 @@
     <b-container fluid class="pl-0 pr-0">
       <b-navbar toggleable="sm" type="dark" variant="info" class="px-md-2 px-lg-5 px-xl-5" fixed="top">
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-        <b-navbar-brand :to="$i18n.path('')" exact class="ml-lg-5">{{appName}}</b-navbar-brand>
+        <b-navbar-brand :to="$i18n.path('')" exact class="ml-lg-5">
+          <b-img src="./band_200.png" width="27" height="27"></b-img>
+          {{appName}}
+        </b-navbar-brand>
         <b-collapse is-nav id="nav_collapse" class="mr-lg-5">
           <b-navbar-nav class="ml-auto">
             <b-nav-item :to="$i18n.path('')" exact>{{ $t('links.home') }}</b-nav-item>
@@ -77,5 +80,4 @@ export default {
 };
 </script>
 <style>
-
 </style>
