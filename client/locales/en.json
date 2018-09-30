@@ -24,10 +24,10 @@
         "introduction": "This page is made to give you more informations."
     },
     "invitation": {
-        "title": "invitation",
+        "title": "registration on line",
         "register": "register",
-        "supplier": "IM A SUPPLIER",
-        "buyer": "IM A BUYER",
+        "supplier": "I am a supplier",
+        "buyer": "I am a buyer",
         "typeLabel": "type",
         "typesText": {
             "supplier": "supplier",
