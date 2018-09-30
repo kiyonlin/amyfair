@@ -38,6 +38,11 @@
         </b-form-input>
         <b-form-invalid-feedback>{{ errors.first($t('invitation.industryLabel')) }}</b-form-invalid-feedback>
       </b-form-group>
+      <b-form-group id="intentGroup" :label="$t('invitation.intentLabel')" label-for="intent">
+        <b-form-select id="intent" v-model="form.intent" :options="intentOptions" value-field="id" :text-field="intentOptionTextField">
+          <option value="">{{ $t("invitation.selectDefaultOption") }}</option>
+        </b-form-select>
+      </b-form-group>
       <b-form-group :label="$t('invitation.genderLabel')">
         <b-form-radio-group v-model="form.gender" :options="'gendersText' | text('invitation')" name="gender">
         </b-form-radio-group>
@@ -86,11 +91,6 @@
           <option :value="null">{{ $t("invitation.selectDefaultOptionOptional") }}</option>
         </b-form-select>
       </b-form-group>
-      <b-form-group id="intentGroup" :label="$t('invitation.intentLabel')" label-for="intent">
-        <b-form-select id="intent" v-model="form.intent" :options="'intentsText' | text('invitation')">
-          <option :value="null">{{ $t("invitation.selectDefaultOptionOptional") }}</option>
-        </b-form-select>
-      </b-form-group>
       <b-form-group id="tradingIntroGroup" :label="$t('invitation.tradingIntroLabel')" label-for="tradingIntro">
         <b-form-textarea id="tradingIntro" v-model="form.tradingIntro" :rows="5" :max-rows="5" :placeholder="$t('invitation.optional')">
         </b-form-textarea>
@@ -105,8 +105,19 @@ export default {
   mixins: [item],
   data() {
     return {
-      form: {}
+      form: {},
+      intentOptions: []
     };
+  },
+  created() {
+    this.$axios.$get("exhibitions/invitations").then(({ data }) => {
+      this.intentOptions = data;
+    });
+  },
+  computed: {
+    intentOptionTextField() {
+      return this.$i18n.locale == "en" ? "name_en" : "name";
+    }
   }
 };
 </script>

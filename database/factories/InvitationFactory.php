@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
+use App\Modules\Exhibition\Exhibition;
 
 $factory->define(App\Modules\Invitation\Invitation::class, function (Faker $faker) {
     return [
@@ -22,7 +23,9 @@ $factory->define(App\Modules\Invitation\Invitation::class, function (Faker $fake
         'corpAddr'         => $faker->address,
         'website'          => $faker->url,
         'source'           => $faker->word,
-        'intent'           => $faker->word,
+        'intent'           => function () {
+            return create(Exhibition::class)->id;
+        },
         'tradingIntro'     => $faker->sentence,
         'admin_id'         => null,
     ];

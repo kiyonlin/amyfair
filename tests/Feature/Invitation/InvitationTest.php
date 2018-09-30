@@ -59,7 +59,8 @@ class InvitationTest extends TestCase
             ->assertStatus(Response::HTTP_OK)
             ->json();
 
-        $this->assertEquals($invitation->toArray(), $resp['data']);
+        $this->assertEquals(array_get($resp, 'data.id'), $invitation->id);
+        $this->assertEquals(array_get($resp, 'data.exhibition.name'), $invitation->exhibition->name);
     }
 
     /**
@@ -79,10 +80,10 @@ class InvitationTest extends TestCase
         $this->assertDatabaseMissing('invitations', ['id' => $invitation->id]);
     }
 
-    /** 
-     * 批量删除
-     * 
-     * @test 
+    /**
+     * 批量删除.
+     *
+     * @test
      */
     public function admin_can_batch_delete_items()
     {
@@ -92,7 +93,7 @@ class InvitationTest extends TestCase
 
         $this->deleteJson(route('admin.invitations.destroy', [
             'invitation' => $invitations->random()->id,
-            'ids' => $invitations->pluck('id')->toArray()
+            'ids'        => $invitations->pluck('id')->toArray()
         ]))
             ->assertStatus(Response::HTTP_NO_CONTENT);
 

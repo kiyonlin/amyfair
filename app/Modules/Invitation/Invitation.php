@@ -3,6 +3,7 @@
 namespace App\Modules\Invitation;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Modules\Exhibition\Exhibition;
 
 class Invitation extends Model
 {
@@ -12,4 +13,9 @@ class Invitation extends Model
         'gender', 'phone', 'qq', 'wechat', 'whatsapp', 'skype', 'facebook',
         'corpName', 'corpAddr', 'website', 'source', 'intent', 'tradingIntro'
     ];
+
+    public function exhibition()
+    {
+        return $this->belongsTo(Exhibition::class, 'intent');
+    }
 }

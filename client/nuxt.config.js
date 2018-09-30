@@ -4,8 +4,9 @@ module.exports = {
     srcDir: __dirname,
 
     env: {
-        appName: process.env.APP_NAME || 'Amy fair',
-        API_URL: 'http://amyfair.com/api'
+        appNameEn: 'Amy fair',
+        appName: '博裕会展',
+        API_URL: 'http://api.amyfairgroup.com/api'
     },
 
     /*

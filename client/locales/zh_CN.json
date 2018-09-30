@@ -79,6 +79,7 @@
             "female": "女"
         },
         "selectDefaultOptionOptional": "-- 请选择(可选) --",
+        "selectDefaultOption": "-- 请选择 --",
         "optional": "可选",
         "added": "谢谢参与"
     },

@@ -130,74 +130,72 @@
 </template>
 
 <script>
-    import swal from "sweetalert2";
-
-    export default {
-        // layout: "none",
-        head () {
-            return {
-                title:
-                    this.$t("invitation.title") + " - " + this.$t("invitation.register")
-            };
-        },
-        data () {
-            return {
-                show: true,
-                type: null,
-                form: {}
-            };
-        },
-        created () {
-            this.form.type = this.$route.query.type;
-        },
-        computed: {
-            canSubmit () {
-                return this.$validator.errors.items.length == 0;
-            }
-        },
-        methods: {
-            onSubmit (evt) {
-                evt.preventDefault();
-                this.$validator.validateAll().then(async
-                result =
-            >
-                {
-                    if (result) {
-                        await
-                        this.$axios.$post("invitations", this.form);
-                        swal({
-                            type: "success",
-                            text: this.$i18n.t("invitation.added"),
-                            timer: 1500
-                        }).then(_ = > {
-                            this.$router.push({
-                            path: this.$i18n.path("")
-                        });
-                    })
-                        ;
-                        return;
-                    }
-                    // scroll to first validate error
-                    this.$el
-                        .querySelector(
-                            '[data-vv-id="' + this.$validator.errors.items[0].id + '"]'
-                        )
-                        .scrollIntoView(false);
-                }
-            )
-                ;
-            },
-            onReset (evt) {
-                evt.preventDefault();
-                /* Reset our form values */
-                this.form = {};
-                /* Trick to reset/clear native browser form validation state */
-                this.show = false;
-                this.$nextTick(() = > {
-                    this.show = true;
-            })
-                ;
-            }
-        }
+import swal from "sweetalert2";
+export default {
+  // layout: "none",
+  head() {
+    return {
+      title:
+        this.$t("invitation.title") + " - " + this.$t("invitation.register")
     };
+  },
+  data() {
+    return {
+      show: true,
+      type: null,
+      form: {},
+      intentOptions: []
+    };
+  },
+  created() {
+    this.form.type = this.$route.query.type;
+    this.$axios.$get("exhibitions/invitations").then(({ data }) => {
+      this.intentOptions = data;
+    });
+  },
+  computed: {
+    canSubmit() {
+      return this.$validator.errors.items.length == 0;
+    },
+    intentOptionTextField() {
+      return this.$i18n.locale == "en" ? "name_en" : "name";
+    }
+  },
+  methods: {
+    onSubmit(evt) {
+      evt.preventDefault();
+      this.$validator.validateAll().then(async result => {
+        if (result) {
+          await this.$axios.$post("invitations", this.form);
+          swal({
+            type: "success",
+            text: this.$i18n.t("invitation.added"),
+            timer: 1500
+          }).then(_ => {
+            this.$router.push({
+              path: this.$i18n.path("")
+            });
+          });
+          return;
+        }
+        // scroll to first validate error
+        this.$el
+          .querySelector(
+            '[data-vv-id="' + this.$validator.errors.items[0].id + '"]'
+          )
+          .scrollIntoView(false);
+      });
+    },
+    onReset(evt) {
+      evt.preventDefault();
+      /* Reset our form values */
+      this.form = {};
+      /* Trick to reset/clear native browser form validation state */
+      this.show = false;
+      this.$nextTick(() => {
+        this.show = true;
+      });
+    }
+  }
+};
 </script>

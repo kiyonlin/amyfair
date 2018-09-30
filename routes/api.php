@@ -20,6 +20,10 @@ Route::group(['namespace' => 'Invitation'], function () {
     Route::post('invitations', 'InvitationController@store')->name('invitations.store');
 });
 
+Route::group(['namespace' => 'Exhibition'], function () {
+    Route::get('exhibitions/invitations', 'ExhibitionInvitationController@index')->name('exhibitions.invitations.index');
+});
+
 Route::get('test', function () {
     return 'test api';
 });
