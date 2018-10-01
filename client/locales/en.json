@@ -42,7 +42,7 @@
         "passportNoLabel": "Passport No",
         "passportNoPlaceholder": "Enter passport number",
         "visaTypeLabel": "Visa Type",
-        "visaTypeLabelText": {
+        "visaTypeText": {
             "work": "Work Visa",
             "tourist": "Tourist Visa",
             "student": "Student Visa"

@@ -38,6 +38,11 @@
         </b-form-input>
         <b-form-invalid-feedback>{{ errors.first($t('invitation.industryLabel')) }}</b-form-invalid-feedback>
       </b-form-group>
+        <b-form-group id="visaTypeGroup" :label="$t('invitation.visaTypeLabel')" label-for="visaType">
+            <b-form-select id="visaType" v-model="form.visaType" :options="'visaTypeText' | text('invitation')" value-field="id">
+                <option value="">{{ $t("invitation.selectDefaultOption") }}</option>
+            </b-form-select>
+        </b-form-group>
       <b-form-group id="intentGroup" :label="$t('invitation.intentLabel')" label-for="intent">
         <b-form-select id="intent" v-model="form.intent" :options="intentOptions" value-field="id" :text-field="intentOptionTextField">
           <option value="">{{ $t("invitation.selectDefaultOption") }}</option>

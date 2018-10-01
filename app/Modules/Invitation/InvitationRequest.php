@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class InvitationRequest extends FormRequest
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -28,7 +29,8 @@ class InvitationRequest extends FormRequest
             'email'    => 'required|email',
             'mobile'   => 'required',
             'country'  => 'required',
-            'industry' => 'required'
+            'industry' => 'required',
+            'visaType' => 'required|in:work,student,tourist',
         ];
     }
 }

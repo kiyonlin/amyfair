@@ -8,7 +8,7 @@ use App\Modules\Exhibition\Exhibition;
 class Invitation extends Model
 {
     protected $fillable = [
-        'type', 'email', 'mobile', 'passportNo', 'fullName', 'country', 'industry',
+        'type', 'email', 'mobile', 'passportNo', 'visaType', 'fullName', 'country', 'industry',
 
         'gender', 'phone', 'qq', 'wechat', 'whatsapp', 'skype', 'facebook',
         'corpName', 'corpAddr', 'website', 'source', 'intent', 'tradingIntro'

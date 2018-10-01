@@ -68,6 +68,17 @@
                         <b-form-invalid-feedback>{{ errors.first($t('invitation.industryLabel')) }}
                         </b-form-invalid-feedback>
                     </b-form-group>
+                    <b-form-group id="visaTypeGroup" :label="$t('invitation.visaTypeLabel')" label-for="visaType">
+                        <b-form-select id="visaType" :name="$t('invitation.visaTypeLabel')" v-model="form.visaType"
+                                       v-validate.initial="'required'"
+                                       :state="!errors.has($t('invitation.visaTypeLabel'))"
+                                       :options="'visaTypeText' | text('invitation')">
+                            <option value="undefined">{{ $t("invitation.selectDefaultOption") }}</option>
+
+                        </b-form-select>
+                        <b-form-invalid-feedback>{{ errors.first($t('invitation.visaTypeLabel')) }}
+                        </b-form-invalid-feedback>
+                    </b-form-group>
                     <b-form-group :label="$t('invitation.genderLabel')">
                         <b-form-radio-group v-model="form.gender" :options="'gendersText' | text('invitation')"
                                             name="gender">

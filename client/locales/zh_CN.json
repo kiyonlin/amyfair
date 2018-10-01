@@ -42,7 +42,7 @@
         "passportNoLabel": "护照号码",
         "passportNoPlaceholder": "请输入护照号码CN",
         "visaTypeLabel": "签证类型",
-        "visaTypeLabelText": {
+        "visaTypeText": {
             "work": "工作签证",
             "tourist": "旅游签证",
             "student": "学生签证"
