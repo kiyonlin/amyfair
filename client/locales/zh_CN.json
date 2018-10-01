@@ -41,6 +41,12 @@
         "fullNamePlaceholder": "请输入您的姓名",
         "passportNoLabel": "护照号码",
         "passportNoPlaceholder": "请输入护照号码CN",
+        "visaTypeLabel": "签证类型",
+        "visaTypeLabelText": {
+            "work": "工作签证",
+            "tourist": "旅游签证",
+            "student": "学生签证"
+        },
         "genderLabel": "性别",
         "phoneLabel": "电话",
         "imList": "即时通讯至少输入一项",
@@ -50,12 +56,13 @@
         "skypeLabel": "Skype",
         "facebookLabel": "Facebook",
         "corpNameLabel": "公司名称",
+        "corpNamePlaceholder": "请输入您的公司名称",
         "corpAddrLabel": "公司地址",
         "websiteLabel": "公司网址",
         "countryLabel": "国家",
         "countryPlaceholder": "请输入您的国家",
-        "industryLabel": "行业",
-        "industryPlaceholder": "请输入您的行业",
+        "industryLabel": "业务范围",
+        "industryPlaceholder": "请输入您的业务范围",
         "sourceLabel": "来源(可选)",
         "sourcesText": {
             "associationAgency": "协会机构",

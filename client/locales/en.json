@@ -41,6 +41,12 @@
         "fullNamePlaceholder": "Enter fullName",
         "passportNoLabel": "Passport No",
         "passportNoPlaceholder": "Enter passport number",
+        "visaTypeLabel": "Visa Type",
+        "visaTypeLabelText": {
+            "work": "Work Visa",
+            "tourist": "Tourist Visa",
+            "student": "Student Visa"
+        },
         "genderLabel": "Gender",
         "phoneLabel": "Phone",
         "imList": "IM at least one",
@@ -50,12 +56,13 @@
         "skypeLabel": "Skype",
         "facebookLabel": "Facebook",
         "corpNameLabel": "Corp Name",
+        "corpNamePlaceholder": "Your Corperate Name",
         "corpAddrLabel": "Corp Addr",
         "websiteLabel": "Website",
         "countryLabel": "Country",
         "countryPlaceholder": "Country",
-        "industryLabel": "Industry",
-        "industryPlaceholder": "Industry",
+        "industryLabel": "Scope of Business",
+        "industryPlaceholder": "Your Scope of Business",
         "sourceLabel": "Source(Optional)",
         "sourcesText": {
             "associationAgency": "Association Agency",
