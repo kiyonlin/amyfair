@@ -104,7 +104,7 @@ export default {
         { key: "mobile", label: "手机" },
         { key: "fullName", label: "姓名", sortable: true },
         { key: "country", label: "国家", sortable: true },
-        { key: "industry", label: "行业", sortable: true },
+        { key: "industry", label: "业务范围", sortable: true },
         { key: "created_at", label: "申请时间", sortable: true },
         { key: "actions", label: "操作" }
       ]
