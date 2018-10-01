@@ -42,6 +42,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api'], function () {
         Route::get('invitations', 'InvitationController@index')->name('admin.invitations.index');
         Route::get('invitations/{invitation}', 'InvitationController@show')->name('admin.invitations.show');
         Route::delete('invitations/{invitation}', 'InvitationController@destroy')->name('admin.invitations.destroy');
+        Route::get('invitations/export', 'InvitationController@export')->name('admin.invitations.export');
     });
 
     Route::group(['namespace' => 'Exhibition'], function () {

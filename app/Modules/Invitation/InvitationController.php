@@ -4,6 +4,7 @@ namespace App\Modules\Invitation;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use Maatwebsite\Excel\Facades\Excel;
 
 class InvitationController extends ApiController
 {
@@ -63,5 +64,10 @@ class InvitationController extends ApiController
         }
 
         return $this->respondNoContent();
+    }
+
+    public function export()
+    {
+        Excel::download(new InvitationExport, 'registration.xlsx');
     }
 }

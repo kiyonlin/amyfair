@@ -7,6 +7,7 @@
             <b-btn @click="add"><fa icon="plus"/></b-btn>
             <b-btn @click="refresh"><fa icon="sync"/></b-btn>
             <b-btn @click="batchRemove"><fa icon="trash"/></b-btn>
+            <b-btn @click="exportData"><fa icon="share"/></b-btn>
           </b-btn-group>
         </b-col>
         <b-col md="1" class="ml-md-auto text-md-right my-1">
@@ -75,7 +76,7 @@
         </b-button>
       </template>
     </b-table>
-    
+
     <pagination :total="total" :per-page.sync="perPage" :current-page.sync="currentPage" :per-page-options="perPageOptions"></pagination>
 
     <form-dialog :item-id.sync="currentItemId" :show.sync="showModal" :is-edit="isEdit" :path="path"></form-dialog>
@@ -109,6 +110,13 @@ export default {
         { key: "actions", label: "操作" }
       ]
     };
-  }
+  },
+    methods: {
+        exportData() {
+            this.$axios.$get(`${this.path}/export`).then(({ data }) => {
+                console.log(data);
+            });
+      }
+    }
 };
 </script>

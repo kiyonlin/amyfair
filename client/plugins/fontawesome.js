@@ -16,7 +16,8 @@ import {
     faPlus,
     faSearch,
     faSync,
-    faTrash
+    faTrash,
+    faShare
 } from '@fortawesome/fontawesome-free-solid/shakable.es'
 
 import { faGithub } from '@fortawesome/fontawesome-free-brands/shakable.es'
@@ -27,7 +28,7 @@ fontawesome.library.add(
     faUser, faKey, faUserCircle, faLock,
     faSignOutAlt, faCog, faBell, faMobile,
     faPlus, faSearch, faSync, faTrash,
-    faGithub,
+    faGithub, faShare
 )
 
 Vue.component('fa', FontAwesomeIcon)
